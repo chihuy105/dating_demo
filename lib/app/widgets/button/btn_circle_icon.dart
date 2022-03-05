@@ -7,6 +7,8 @@ class BtnCircleIcon extends StatelessWidget {
     this.backgroundColor,
     this.iconColor,
     this.iconSize,
+    this.borderColor,
+    this.borderSize = 2,
     this.size = Dimens.ic_3XL,
     this.style,
     this.padding,
@@ -18,20 +20,27 @@ class BtnCircleIcon extends StatelessWidget {
   final Color? backgroundColor;
   final double? iconSize;
   final Color? iconColor;
+  final Color? borderColor;
   final double? size;
+  final double borderSize;
   final ButtonStyle? style;
   final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
+    var circleBorder = borderColor != null
+        ? CircleBorder(side: BorderSide(width: borderSize, color: borderColor!))
+        : CircleBorder();
+
     var buttonStyle = style ??
         TextButton.styleFrom(
-            primary: Colors.grey[700],
-            backgroundColor:
-                backgroundColor ?? Colors.grey[600]!.withOpacity(0.3),
-            onSurface: Colors.grey,
-            padding: padding,
-            shape: CircleBorder());
+          primary: Colors.grey[700],
+          backgroundColor:
+              backgroundColor ?? Colors.grey[600]!.withOpacity(0.3),
+          onSurface: Colors.grey,
+          padding: padding,
+          shape: circleBorder,
+        );
     final Widget iconWidget;
     if (this.icon is IconData) {
       iconWidget = FittedBox(

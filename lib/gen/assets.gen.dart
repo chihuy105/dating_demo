@@ -15,6 +15,13 @@ class $AssetsIconsGen {
   $AssetsIconsCommonGen get common => const $AssetsIconsCommonGen();
 }
 
+class $AssetsImgGen {
+  const $AssetsImgGen();
+
+  /// File path: assets/img/no_image.png
+  AssetGenImage get noImage => const AssetGenImage('assets/img/no_image.png');
+}
+
 class $AssetsIconsCommonGen {
   const $AssetsIconsCommonGen();
 
@@ -38,6 +45,7 @@ class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImgGen img = $AssetsImgGen();
 }
 
 class AssetGenImage extends AssetImage {

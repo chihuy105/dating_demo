@@ -28,7 +28,7 @@ class DioModule extends DisposableInterface {
     );
     // Get Data for mobile on server
     options.headers["device"] = AppConfig.DEVICE_TYPE;
-    options.queryParameters["api_token"] = AppConfig.MONKS_TOKEN;
+    options.headers["app-id"] = AppConfig.APP_ID;
 
     _dio = Dio(options);
 

@@ -54,13 +54,19 @@ class AppButton {
     );
   }
 
-  static ButtonStyle textStyle(BuildContext context) {
+  static ButtonStyle textStyle(BuildContext context, {Color? backgroundColor}) {
     return ButtonStyle(
       foregroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) => Theme.of(context).primaryColor,
+            (Set<MaterialState> states) => backgroundColor ??Theme.of(context).primaryColor,
+      ),
+      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) => backgroundColor ?? Theme.of(context).primaryColor,
+      ),
+      elevation: MaterialStateProperty.resolveWith<double?>(
+            (Set<MaterialState> states) => 0,
       ),
       overlayColor: MaterialStateColor.resolveWith(
-              (states) => Theme.of(context).primaryColor.withOpacity(0.1)),
+              (states) => backgroundColor ??Theme.of(context).primaryColor.withOpacity(0.1)),
     );
   }
 
