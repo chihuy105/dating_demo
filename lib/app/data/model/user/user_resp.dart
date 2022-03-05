@@ -25,14 +25,19 @@ class UserResp {
 @JsonSerializable(ignoreUnannotated: false)
 class UserEntity extends HiveObject{
   @JsonKey(name: 'id')
+  @HiveField(0)
   String? id;
   @JsonKey(name: 'title')
+  @HiveField(1)
   String? title;
   @JsonKey(name: 'firstName')
+  @HiveField(2)
   String? firstName;
   @JsonKey(name: 'lastName')
+  @HiveField(3)
   String? lastName;
   @JsonKey(name: 'picture')
+  @HiveField(4)
   String? picture;
 
   UserEntity({this.id, this.title, this.firstName, this.lastName, this.picture});

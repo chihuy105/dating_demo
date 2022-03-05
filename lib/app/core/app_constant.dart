@@ -17,6 +17,11 @@ class AppConstant {
 
   static const KEY_BOX = 'KEY_BOX';
 
+  static const KEY_USER_BOX = 'KEY_USER_BOX';
+  static const KEY_USER_AGE = 'KEY_USER_AGE';
+  static const KEY_USER_LIKED_LIST = 'KEY_USER_LIKED_LIST';
+  static const KEY_USER_SECOND_LOOK_LIST = 'KEY_USER_SECOND_LOOK_LIST';
+
   static const KEY_CART_LIST = 'KEY_CART_LIST';
   static const KEY_PLANT_LIST = 'KEY_PLANT_LIST';
   static const KEY_SELECTED_DATE = 'KEY_SELECTED_DATE';

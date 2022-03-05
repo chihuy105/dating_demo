@@ -1,5 +1,6 @@
 
 export 'package:dating_demo/app/widgets/app/scroll_behavior_default.dart';
+export 'package:dating_demo/app/widgets/user/user_item.dart';
 
 // Img
 export 'package:dating_demo/app/widgets/image/img.dart';

@@ -20,7 +20,6 @@ class _UserCardState extends State<UserCard> {
     if (widget.userEntity.id != null && _ageLD.value != null) {
       _userService.getUserAge(widget.userEntity.id!).then((value) {
         _ageLD.value = value.toString();
-        logger.i(widget.userEntity.id);
       });
     }
     super.initState();
@@ -81,7 +80,6 @@ class _UserAge extends StatefulWidget {
 }
 
 class _UserAgeState extends State<_UserAge> {
-
 
 
   @override

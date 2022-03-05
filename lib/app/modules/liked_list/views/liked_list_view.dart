@@ -12,10 +12,15 @@ class LikedListView extends GetView<LikedListController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'LikedListView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+        child: ListView.builder(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: controller.userList.length,
+            itemBuilder: (context, index) {
+              return UserItem(
+                userEntity: controller.userList.getOrNull(index),
+              );
+            }),
       ),
     );
   }
