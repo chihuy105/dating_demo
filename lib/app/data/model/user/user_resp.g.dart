@@ -8,7 +8,7 @@ part of 'user_resp.dart';
 
 UserResp _$UserRespFromJson(Map<String, dynamic> json) => UserResp(
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => UserBean.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => UserEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
       total: json['total'] as int?,
       page: json['page'] as int?,
@@ -22,7 +22,7 @@ Map<String, dynamic> _$UserRespToJson(UserResp instance) => <String, dynamic>{
       'limit': instance.limit,
     };
 
-UserBean _$UserBeanFromJson(Map<String, dynamic> json) => UserBean(
+UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
       id: json['id'] as String?,
       title: json['title'] as String?,
       firstName: json['firstName'] as String?,
@@ -30,7 +30,8 @@ UserBean _$UserBeanFromJson(Map<String, dynamic> json) => UserBean(
       picture: json['picture'] as String?,
     );
 
-Map<String, dynamic> _$UserBeanToJson(UserBean instance) => <String, dynamic>{
+Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'firstName': instance.firstName,

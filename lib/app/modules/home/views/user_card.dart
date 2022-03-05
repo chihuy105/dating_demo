@@ -1,4 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
+import 'package:dating_demo/app/data/model/user/user_resp.dart';
 import 'package:dating_demo/app/widgets/image/blend_bottom.dart';
 
 class UserCard extends StatelessWidget {
@@ -8,6 +9,14 @@ class UserCard extends StatelessWidget {
 
   const UserCard({Key? key, this.avatar, this.name, this.age,})
       : super(key: key);
+
+  static UserCard byUserEntity(UserEntity user) {
+    return UserCard(
+      avatar: user.picture,
+      name: user.firstName ?? '' + (user.lastName ?? ''),
+      age: '25',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

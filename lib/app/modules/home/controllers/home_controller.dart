@@ -1,52 +1,45 @@
 import 'package:dating_demo/all_file/all_file.dart';
+import 'package:dating_demo/app/controllers/mixin_paging.dart';
+import 'package:dating_demo/app/data/model/user/user_resp.dart';
+import 'package:dating_demo/app/data/repository/user/user_service.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
-class HomeController extends GetxController {
-  MatchEngine matchEngine = MatchEngine(swipeItems: []);
-  final RxList<SwipeItem> swipeItemLD = RxList<SwipeItem>();
-
-  @override
-  void onInit() {
-    super.onInit();
-    swipeItemLD.value = [
-      'https://static.wikia.nocookie.net/disney/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200621234841&path-prefix=vi',
-      'https://cdn.tgdd.vn/Files/2016/07/11/854712/hinh-nen-pikachu-cho-dien-thoai-hd-6.jpg',
-      'https://nguoinoitieng.tv/images/nnt/96/0/bbi0.jpg'
-    ].mapAsList((v) => SwipeItem(
-        content: v,
-        likeAction: () => {
-          // Store to list
-        },
-        superlikeAction: () => {
-          // Store to list
-        },
-        nopeAction: () => {
-          // Store to list
-        }));
-    matchEngine = MatchEngine(swipeItems: swipeItemLD);
-  }
+class HomeController extends GetxController with MixinPaging<UserEntity> {
+  MatchEngine matchEngine = MatchEngine(swipeItems: [SwipeItem(content: '')]);
+  final RxList<SwipeItem> swipeItemLD = RxList<SwipeItem>([]);
+  final userService = Get.find<UserService>();
 
   @override
   void onReady() {
     super.onReady();
-    Future.delayed(Duration(seconds: 4)).then((value) {
-      swipeItemLD.addAll([
-        'https://nguoinoitieng.tv/images/nnt/96/0/bbi0.jpg',
-        'https://cdn.tgdd.vn/Files/2016/07/11/854712/hinh-nen-pikachu-cho-dien-thoai-hd-6.jpg',
-        'https://static.wikia.nocookie.net/disney/images/4/49/Ash_Pikachu.png/revision/latest?cb=20200621234841&path-prefix=vi',
-        'https://nguoinoitieng.tv/images/nnt/96/0/bbi0.jpg',
-      ].mapAsList((v) => SwipeItem(
-          content: v,
-          likeAction: () => {
-            // Store to list
-          },
-          superlikeAction: () => {
-            // Store to list
-          },
-          nopeAction: () => {
-            // Store to list
-          })));
-    });
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadData(true);
+    matchEngine = MatchEngine(swipeItems: swipeItemLD);
+  }
+
+  @override
+  Future fetchListData(int page, int pageSize) {
+    return userService.fetchUserList(page: page);
+  }
+
+  void onListDataChange([List<UserEntity>? userList]) {
+    logger.i('New data');
+    swipeItemLD.clear();
+    swipeItemLD.addAll(userList.mapAsList((v) => SwipeItem(
+        content: v,
+        likeAction: () => {
+              // Store to list
+            },
+        superlikeAction: () => {
+              // Store to list
+            },
+        nopeAction: () => {
+              // Store to list
+            })));
   }
 
   @override

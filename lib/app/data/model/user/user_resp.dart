@@ -5,7 +5,7 @@ part 'user_resp.g.dart';
 @JsonSerializable(ignoreUnannotated: false)
 class UserResp {
   @JsonKey(name: 'data')
-  List<UserBean>? data;
+  List<UserEntity>? data;
   @JsonKey(name: 'total')
   int? total;
   @JsonKey(name: 'page')
@@ -21,7 +21,7 @@ class UserResp {
 }
 
 @JsonSerializable(ignoreUnannotated: false)
-class UserBean {
+class UserEntity {
   @JsonKey(name: 'id')
   String? id;
   @JsonKey(name: 'title')
@@ -33,10 +33,10 @@ class UserBean {
   @JsonKey(name: 'picture')
   String? picture;
 
-  UserBean({this.id, this.title, this.firstName, this.lastName, this.picture});
+  UserEntity({this.id, this.title, this.firstName, this.lastName, this.picture});
 
-   factory UserBean.fromJson(Map<String, dynamic> json) => _$UserBeanFromJson(json);
+   factory UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
 
-   Map<String, dynamic> toJson() => _$UserBeanToJson(this);
+   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
 }
 

@@ -12,7 +12,8 @@ class AppConstant {
 
   static const double PULL_DOWN_OFFSET = 40;
 
-  static const int PAGE_SIZE_DEFAULT = 20;
+  static const int PAGE_SIZE_DEFAULT = 10;
+  static const String PAGE_SIZE_DEFAULT_STRING = '10';
 
   static const KEY_BOX = 'KEY_BOX';
 
