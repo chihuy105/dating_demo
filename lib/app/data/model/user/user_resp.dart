@@ -1,6 +1,7 @@
-import 'package:json_annotation/json_annotation.dart'; 
+import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
-part 'user_resp.g.dart'; 
+part 'user_resp.g.dart';
 
 @JsonSerializable(ignoreUnannotated: false)
 class UserResp {
@@ -20,8 +21,9 @@ class UserResp {
    Map<String, dynamic> toJson() => _$UserRespToJson(this);
 }
 
+@HiveType(typeId: 0)
 @JsonSerializable(ignoreUnannotated: false)
-class UserEntity {
+class UserEntity extends HiveObject{
   @JsonKey(name: 'id')
   String? id;
   @JsonKey(name: 'title')

@@ -14,7 +14,7 @@ class _UserApi implements UserApi {
   String? baseUrl;
 
   @override
-  Future<UserResp> getUsers(
+  Future<UserResp?> getUsers(
       {limit = AppConstant.PAGE_SIZE_DEFAULT_STRING, page}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit, r'page': page};
@@ -27,7 +27,8 @@ class _UserApi implements UserApi {
                 .compose(_dio.options, '/data/v1/user',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = UserResp.fromJson(_result.data!);
+    final value =
+        _result.data == null ? null : UserResp.fromJson(_result.data!);
     return value;
   }
 

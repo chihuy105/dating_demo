@@ -1,4 +1,6 @@
 import 'package:dating_demo/all_file/all_file.dart';
+import 'package:dating_demo/app/data/model/user/user_resp.dart';
+import 'package:dating_demo/app/data/services/app/data_service.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
@@ -8,6 +10,10 @@ Future<void> main() async {
   // Logger
   logger = LoggerCustom(logEnable: !AppConfig.IN_PRODUCTION);
   // logger = LoggerCustom(logEnable: true);
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserEntityAdapter());
+  LocalDataService.createBox();
 
   // Initialize service ,...
   await AppServices.initServices();

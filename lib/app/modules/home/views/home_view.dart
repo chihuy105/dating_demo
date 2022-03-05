@@ -27,9 +27,13 @@ class HomeView extends GetView<HomeController> {
               ? SwipeCards(
                   matchEngine: controller.matchEngine,
                   itemBuilder: (BuildContext context, int index) {
-                    return UserCard.byUserEntity(controller.swipeItemLD
+                    var userEntity = controller.swipeItemLD
                         .getOrNull(index)
-                        ?.content as UserEntity);
+                        ?.content as UserEntity;
+                    return UserCard(
+                      userEntity: userEntity,
+                      key: ValueKey(userEntity.id),
+                    );
                   },
                   onStackFinished: () {},
                   itemChanged: (SwipeItem item, int index) {

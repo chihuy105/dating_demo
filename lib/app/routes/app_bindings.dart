@@ -1,7 +1,7 @@
 
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/data/repository/user/user_api.dart';
-import 'package:dating_demo/app/data/repository/user/user_service.dart';
+import 'package:dating_demo/app/data/services/user/user_service.dart';
 
 class AppBindings{
   AppBindings._();

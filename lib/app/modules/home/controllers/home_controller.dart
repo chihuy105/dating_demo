@@ -1,7 +1,7 @@
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/controllers/mixin_paging.dart';
 import 'package:dating_demo/app/data/model/user/user_resp.dart';
-import 'package:dating_demo/app/data/repository/user/user_service.dart';
+import 'package:dating_demo/app/data/services/user/user_service.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
 class HomeController extends GetxController with MixinPaging<UserEntity> {

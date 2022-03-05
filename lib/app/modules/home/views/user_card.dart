@@ -1,21 +1,29 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/model/user/user_resp.dart';
+import 'package:dating_demo/app/data/services/user/user_service.dart';
 import 'package:dating_demo/app/widgets/image/blend_bottom.dart';
 
-class UserCard extends StatelessWidget {
-  final String? avatar;
-  final String? name;
-  final String? age;
+class UserCard extends StatefulWidget {
+  final UserEntity userEntity;
 
-  const UserCard({Key? key, this.avatar, this.name, this.age,})
-      : super(key: key);
+  UserCard({Key? key, required this.userEntity}) : super(key: key);
 
-  static UserCard byUserEntity(UserEntity user) {
-    return UserCard(
-      avatar: user.picture,
-      name: user.firstName ?? '' + (user.lastName ?? ''),
-      age: '25',
-    );
+  @override
+  State<UserCard> createState() => _UserCardState();
+}
+
+class _UserCardState extends State<UserCard> {
+  final _userService = Get.find<UserService>();
+  final _ageLD = Rx<String?>('');
+
+  @override
+  void initState() {
+    if (widget.userEntity.id != null && _ageLD.value != null) {
+      _userService.getUserAge(widget.userEntity.id!).then((value) {
+        _ageLD.value = value.toString();
+        logger.i(widget.userEntity.id);
+      });
+    }
+    super.initState();
   }
 
   @override
@@ -27,7 +35,7 @@ class UserCard extends StatelessWidget {
         children: [
           BlendBottom(
             child: Img(
-              avatar,
+              widget.userEntity.picture,
               fit: BoxFit.cover,
             ),
           ),
@@ -37,9 +45,9 @@ class UserCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  name?.text.xl3.white.make() ?? Gaps.empty,
+                  widget.userEntity.getFullName()?.text.xl3.white.make() ?? Gaps.empty,
                   Gaps.hGap12,
-                  age?.text.xl3.white.make() ?? Gaps.empty,
+                  Obx(() => _ageLD.value?.text.xl3.white.make() ?? Gaps.empty),
                 ],
               ),
               Gaps.vGap8,
@@ -61,3 +69,31 @@ class UserCard extends StatelessWidget {
     ).cornerRadius(Dimens.rad_XL);
   }
 }
+
+
+
+class _UserAge extends StatefulWidget {
+  final String? age;
+  const _UserAge({Key? key, this.age}) : super(key: key);
+
+  @override
+  State<_UserAge> createState() => _UserAgeState();
+}
+
+class _UserAgeState extends State<_UserAge> {
+
+
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+
+}
+
