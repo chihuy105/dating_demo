@@ -20,9 +20,7 @@ class UserService extends GetxService {
     });
   }
 
-  /**
-   * Get User age, if the user age not exist then random it
-   */
+  /// Get User age, if the user age not exist then random it
   Future<int> getUserAge(String userId) {
     var age = userBox?.get(AppConstant.KEY_USER_AGE + userId);
     if (age == null){
@@ -32,9 +30,7 @@ class UserService extends GetxService {
     return Future.delayed(const Duration(seconds: 2)).then((value) => Future.value(age));
   }
 
-  /**
-   * Get User liked stored list
-   */
+  /// Get User liked stored list
   List<UserEntity> getLikedUserList() {
     var boxValue = userBox?.get(AppConstant.KEY_USER_LIKED_LIST);
     if (boxValue != null){
@@ -45,9 +41,7 @@ class UserService extends GetxService {
     return [];
   }
 
-  /**
-   * Store User liked
-   */
+  /// Store User liked
   void addLikedUserData(UserEntity userEntity) {
     List? list = userBox?.get(AppConstant.KEY_USER_LIKED_LIST);
     if (list.isNullOrEmpty()){
@@ -59,9 +53,7 @@ class UserService extends GetxService {
     userBox?.put(AppConstant.KEY_USER_LIKED_LIST, list);
   }
 
-  /**
-   * Get User second look stored list
-   */
+  /// Get User second look stored list
   List<UserEntity> getSecondLookUserList() {
     var boxValue = userBox?.get(AppConstant.KEY_USER_SECOND_LOOK_LIST);
     if (boxValue != null){
@@ -72,9 +64,7 @@ class UserService extends GetxService {
     return [];
   }
 
-  /**
-   * Store User second look
-   */
+  /// Store User second look
   void addSecondLookUserData(UserEntity userEntity) {
     List? list = userBox?.get(AppConstant.KEY_USER_SECOND_LOOK_LIST);
     if (list.isNullOrEmpty()){
@@ -87,9 +77,5 @@ class UserService extends GetxService {
   }
 
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
 }

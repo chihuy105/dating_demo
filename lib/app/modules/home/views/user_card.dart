@@ -52,7 +52,7 @@ class _UserCardState extends State<UserCard> {
               Gaps.vGap8,
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.fiber_manual_record,
                     color: Colors.green,
                     size: 15,

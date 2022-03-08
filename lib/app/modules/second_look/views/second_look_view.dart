@@ -4,6 +4,7 @@ import 'package:dating_demo/app/widgets/user/user_item.dart';
 import '../controllers/second_look_controller.dart';
 
 class SecondLookView extends GetView<SecondLookController> {
+  const SecondLookView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

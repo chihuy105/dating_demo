@@ -5,6 +5,8 @@ import 'package:swipe_cards/swipe_cards.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  const HomeView({Key? key}) : super(key: key);
+
   _buildBtn(icon, color, onPress) {
     return BtnCircleIcon(
       icon,
@@ -23,7 +25,7 @@ class HomeView extends GetView<HomeController> {
       body: SafeArea(
           child: Column(
         children: [
-          Obx(() => controller.swipeItemLD.length > 0
+          Obx(() => !controller.swipeItemLD.isNullOrEmpty()
               ? SwipeCards(
                   matchEngine: controller.matchEngine,
                   itemBuilder: (BuildContext context, int index) {
@@ -67,7 +69,7 @@ class HomeView extends GetView<HomeController> {
               children: [
                 Btn(
                   child: 'Second Look'.text.white.make(),
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.close,
                     color: Colors.red,
                   ),
@@ -78,7 +80,7 @@ class HomeView extends GetView<HomeController> {
                 Gaps.hGap16,
                 Btn(
                   child: 'Liked List'.text.white.make(),
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.favorite,
                     color: Colors.red,
                   ),
