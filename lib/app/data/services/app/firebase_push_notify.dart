@@ -8,8 +8,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 /// <meta-data
 ///      android:name="com.google.firebase.messaging.default_notification_channel_id"
 ///      android:value="high_importance_channel" />
-/// 2. If use IOS lower IOS 10 then add onDidReceiveLocalNotification for flutter_local_notifications
-/// 3.
+/// 2. IOS: https://firebase.flutter.dev/docs/messaging/apple-integration
+/// 3. If use IOS lower IOS 10 then add onDidReceiveLocalNotification for flutter_local_notifications
+///
 ///
 
 const _iconLocation = '@mipmap/ic_launcher';
