@@ -48,7 +48,7 @@ class FirebasePushNotification {
     await _setupMessageListener();
     await _setupInteractedMessage();
 
-    FirebaseMessaging.instance.getToken().then((value) {
+    _firebaseMessaging.getToken().then((value) {
       logger.i('FirebaseMessaging Token: ' + (value?.toString() ?? ''));
     });
   }
@@ -124,8 +124,6 @@ class FirebasePushNotification {
                 channel!.id,
                 channel!.name,
                 channel!.description,
-                icon: 'launch_background',
-                // icon: android.smallIcon,
                 // other properties...
               ),
             ),
@@ -150,7 +148,7 @@ class FirebasePushNotification {
   ///
   Future<void> _enableHeadUpMessage() async {
     if (Platform.isIOS) {
-      FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      _firebaseMessaging.setForegroundNotificationPresentationOptions(
         alert: true, // Required to display a heads up notification
         badge: true,
         sound: true,
@@ -168,16 +166,14 @@ class FirebasePushNotification {
 
       await flutterLocalNotificationsPlugin
           ?.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+              AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel!);
     }
   }
 
   Future<void> _setupInteractedMessage() async {
     // Get any messages which caused the application to open from a terminated state.
-    FirebaseMessaging.instance
-        .getInitialMessage()
-        .then((RemoteMessage? message) {
+    _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
       _logMessage(message);
       _onMessageClick(message);
     });
@@ -186,9 +182,17 @@ class FirebasePushNotification {
     FirebaseMessaging.onMessageOpenedApp.listen(_onMessageClick);
   }
 
+  Future<void> subscribeToTopic(String topicName) async {
+    _firebaseMessaging.subscribeToTopic(topicName);
+  }
+
   void _onMessageClick(RemoteMessage? message) {
-    logger.i('_onMessageClick');
-    _handleNotificationClicked(message?.data);
+    if (message == null) {
+      return;
+    }
+
+    logger.i('_onMessageClick ', message);
+    _handleNotificationClicked(message.data);
   }
 
   void _handleNotificationClicked(Map<String, dynamic>? jsonData) {
