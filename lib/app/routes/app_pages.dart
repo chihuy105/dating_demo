@@ -17,17 +17,17 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => const HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.LIKED_LIST,
-      page: () => LikedListView(),
+      page: () => const LikedListView(),
       binding: LikedListBinding(),
     ),
     GetPage(
       name: _Paths.SECOND_LOOK,
-      page: () => SecondLookView(),
+      page: () => const SecondLookView(),
       binding: SecondLookBinding(),
     ),
   ];

@@ -7,7 +7,7 @@ class BtnBack extends StatelessWidget {
   final Color? backgroundColor;
   final bool? checkCanPop;
 
-  BtnBack(
+  const BtnBack(
       {Key? key,
       this.onPress,
       this.size = 25,

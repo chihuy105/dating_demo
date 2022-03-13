@@ -1,20 +1,10 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/model/user/user_resp.dart';
-import 'package:dating_demo/app/data/services/app/data_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Logger
-  logger = LoggerCustom(logEnable: !AppConfig.IN_PRODUCTION);
-  // logger = LoggerCustom(logEnable: true);
-
-  await Hive.initFlutter();
-  Hive.registerAdapter(UserEntityAdapter());
-  LocalDataService.createBox();
-
   // Initialize service ,...
   await AppServices.initServices();
 
@@ -49,12 +39,12 @@ class _MyAppState extends State<MyApp> {
       child: OverlaySupport.global(
           child: GetMaterialApp(
             translations: Languages(),
-            locale: Locale('vi', 'VN'),
-            fallbackLocale: Locale('en', 'US'),
+            locale: const Locale('vi', 'VN'),
+            fallbackLocale: const Locale('en', 'US'),
             title: AppConfig.APP_NAME,
             builder: (context, child) {
               child = ScrollConfiguration(
-                behavior: ScrollBehaviorDefault(),
+                behavior: const ScrollBehaviorDefault(),
                 child: child!,
               );
               return child;

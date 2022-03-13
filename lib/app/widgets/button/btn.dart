@@ -22,7 +22,7 @@ class Btn extends StatelessWidget {
   // Action
   final VoidCallback? onPressed;
 
-  Btn({
+  const Btn({
     Key? key,
     this.btnType,
     this.padding,
@@ -37,7 +37,7 @@ class Btn extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
 
-  Btn.big({
+  const Btn.big({
     Key? key,
     this.child,
     this.text,
@@ -73,7 +73,6 @@ class Btn extends StatelessWidget {
               props: BtnStyleProps(padding: padding));
           break;
         case BtnType.GHOST:
-        case null:
           finalStyle = AppButton.ghostStyle(context,
               props: BtnStyleProps(padding: padding));
           break;

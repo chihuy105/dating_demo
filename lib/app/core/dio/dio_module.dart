@@ -20,7 +20,7 @@ class DioModule extends DisposableInterface {
     }
 
     print('**** Dio create');
-    BaseOptions options = new BaseOptions(
+    BaseOptions options = BaseOptions(
       baseUrl: AppConfig.SERVER_URL,
       connectTimeout: 11000,
       receiveTimeout: 11000,

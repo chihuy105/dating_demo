@@ -1,5 +1,4 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/model/user/user_resp.dart';
 import 'package:dating_demo/app/modules/home/views/user_card.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 import '../controllers/home_controller.dart';

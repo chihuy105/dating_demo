@@ -1,4 +1,4 @@
-package com.dating.dating_demo
+package com.dating.demo
 
 import io.flutter.embedding.android.FlutterActivity
 

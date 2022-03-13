@@ -19,7 +19,7 @@ class LoggerCustom extends Logger{
       :super(
       filter: CustomLogFilter(logEnable: logEnable),
       printer: PrettyPrinter(
-          methodCount: 1,
+          methodCount: 2,
           // number of method calls to be displayed
           errorMethodCount: 8,
           // number of method calls if stacktrace is provided

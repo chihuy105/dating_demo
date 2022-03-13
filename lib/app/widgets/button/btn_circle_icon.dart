@@ -30,7 +30,7 @@ class BtnCircleIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     var circleBorder = borderColor != null
         ? CircleBorder(side: BorderSide(width: borderSize, color: borderColor!))
-        : CircleBorder();
+        : const CircleBorder();
 
     var buttonStyle = style ??
         TextButton.styleFrom(
@@ -42,10 +42,10 @@ class BtnCircleIcon extends StatelessWidget {
           shape: circleBorder,
         );
     final Widget iconWidget;
-    if (this.icon is IconData) {
+    if (icon is IconData) {
       iconWidget = FittedBox(
         child: Icon(
-          this.icon,
+          icon,
           size: iconSize ?? Dimens.ic_L,
           color: iconColor ?? Colors.white,
         ),

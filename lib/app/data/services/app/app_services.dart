@@ -1,18 +1,44 @@
 import 'package:dating_demo/all_file/all_file.dart';
+import 'package:dating_demo/app/data/services/app/firebase_push_notify.dart';
+import 'package:dating_demo/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'app_firebase_config.dart';
+
+
+/// Add this to manifest
+/// <meta-data
+///      android:name="com.google.firebase.messaging.default_notification_channel_id"
+///      android:value="high_importance_channel" />
+///
 
 class AppServices {
-
   static Future<void> initServices() async {
-    print('SERVICE starting ...');
+    logger.i('SERVICE starting ...');
+
+    // Logger
+    logger = LoggerCustom(logEnable: !AppConfig.IN_PRODUCTION);
+    // logger = LoggerCustom(logEnable: true);
+
+    await Hive.initFlutter();
+    Hive.registerAdapter(UserEntityAdapter());
+    LocalDataService.createBox();
 
     // TODO: move some await to SplashScreen
     await Hive.initFlutter();
 
     // Firebase
-    // await Firebase.initializeApp();
-    // await AppFirebaseConfigService.instance.init();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
-    print('SERVICE all started...');
+    FirebasePushNotification.instance.init();
+
+    logger.i('SERVICE all started...');
   }
 
+
 }
+
