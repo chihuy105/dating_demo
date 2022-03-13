@@ -148,27 +148,27 @@ class FirebasePushNotification {
   /// App in Background/Terminated -> this will show message both on the navigation and on the screen as well in
   ///
   Future<void> _enableHeadUpMessage() async {
-    FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-      alert: true, // Required to display a heads up notification
-      badge: true,
-      sound: true,
-    );
     if (Platform.isIOS) {
+      FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+        alert: true, // Required to display a heads up notification
+        badge: true,
+        sound: true,
+      );
     }
 
-    channel = const AndroidNotificationChannel(
-      'high_importance_channel',
-      // id string - create also in Android Manifest
-      'High Importance Notifications', // title
-      'This channel is used for important notifications.', // description
-      importance: Importance.max,
-    );
-
-    await flutterLocalNotificationsPlugin
-        ?.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel!);
     if (Platform.isAndroid) {
+      channel = const AndroidNotificationChannel(
+        'high_importance_channel',
+        // id string - create also in Android Manifest
+        'High Importance Notifications', // title
+        'This channel is used for important notifications.', // description
+        importance: Importance.max,
+      );
+
+      await flutterLocalNotificationsPlugin
+          ?.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel!);
     }
   }
 

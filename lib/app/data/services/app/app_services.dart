@@ -2,11 +2,6 @@ import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/data/services/app/firebase_push_notify.dart';
 import 'package:dating_demo/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
-import 'app_firebase_config.dart';
-
 
 /// Add this to manifest
 /// <meta-data
