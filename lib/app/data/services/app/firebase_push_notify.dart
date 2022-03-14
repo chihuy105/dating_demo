@@ -10,7 +10,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 ///      android:value="high_importance_channel" />
 /// 2. IOS: https://firebase.flutter.dev/docs/messaging/apple-integration
 /// 3. If use IOS lower IOS 10 then add onDidReceiveLocalNotification for flutter_local_notifications
-///
+/// 4. Subscribe to  Global Topics
 ///
 
 const _iconLocation = '@mipmap/ic_launcher';
@@ -75,14 +75,17 @@ class FirebasePushNotification {
   /// Init flutter_local_notifications for local notification
   ///
   Future<void> _initFlutterLocalNotificationPlugin() async {
+    // Android Setting
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings(_iconLocation);
+    // IOS Setting
     const IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
     );
+    // Combine
     const InitializationSettings initializationSettings =
         InitializationSettings(
             android: initializationSettingsAndroid,
@@ -197,6 +200,7 @@ class FirebasePushNotification {
 
   void _handleNotificationClicked(Map<String, dynamic>? jsonData) {
     logger.i('_handleNotificationClicked');
+    // Owner owner = Owner.fromMap(jsonDecode(jsonData['owner']));
     if (jsonData != null && jsonData.containsKey('NotificationType')) {
       switch (jsonData['NotificationType']) {
         // case 'Customer':
