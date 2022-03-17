@@ -58,7 +58,7 @@ mixin MixinPaging<T> {
             })
         .catchError((Object obj) {
       setPagingState(PagingState.Ide);
-      logger.e('${this.runtimeType} ==> catchError');
+      logger.e('${runtimeType} ==> catchError');
       switch (obj.runtimeType) {
         case DioError:
           // Here's the sample to get the failed response error code and message
@@ -66,7 +66,7 @@ mixin MixinPaging<T> {
           logger.e("Got error : ${res?.statusCode} -> ${res?.statusMessage}");
           break;
         default:
-          return Future.error(obj);
+          throw obj;
       }
     });
   }

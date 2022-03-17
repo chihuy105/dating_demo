@@ -12,6 +12,10 @@ export 'dart:convert';
 export 'package:dio/dio.dart' hide Headers, MultipartFile;
 export 'package:retrofit/http.dart';
 
+export 'package:bloc/bloc.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:equatable/equatable.dart';
+
 export 'package:auto_route/auto_route.dart';
 
 export 'package:hive_flutter/hive_flutter.dart';
@@ -32,7 +36,7 @@ export 'package:velocity_x/velocity_x.dart'
 
 export 'package:get/utils.dart';
 export 'package:get/get_core/get_core.dart';
-export 'package:get/get_navigation/get_navigation.dart';
+export 'package:get/get_navigation/get_navigation.dart' hide Transition;
 export 'package:get/get_instance/get_instance.dart';
 export 'package:get/get_state_manager/get_state_manager.dart';
 export 'package:get/get_rx/get_rx.dart'
