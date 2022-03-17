@@ -126,7 +126,6 @@ class FirebasePushNotification {
               android: AndroidNotificationDetails(
                 channel!.id,
                 channel!.name,
-                channel!.description,
                 // other properties...
               ),
             ),
@@ -163,7 +162,6 @@ class FirebasePushNotification {
         'high_importance_channel',
         // id string - create also in Android Manifest
         'High Importance Notifications', // title
-        'This channel is used for important notifications.', // description
         importance: Importance.max,
       );
 

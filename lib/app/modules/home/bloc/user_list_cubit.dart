@@ -30,7 +30,7 @@ class UserListCubit extends Cubit<UserListState> {
       final list = (state as UserListLoading).oldList;
       list.addAll(value);
 
-      emit(UserListLoaded(list));
+      emit(UserListLoaded(list, value));
     });
   }
 }

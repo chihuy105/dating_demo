@@ -14,8 +14,9 @@ class UserListLoading extends UserListState {
 
 class UserListLoaded extends UserListState {
   final List<UserEntity> userList;
+  final List<UserEntity> newList;
 
-  UserListLoaded(this.userList);
+  UserListLoaded(this.userList, this.newList);
 }
 
 class UserListError extends UserListState {}

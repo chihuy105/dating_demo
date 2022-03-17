@@ -46,7 +46,7 @@ dependencies:
   flutter_bloc: ^8.0.1
 
   ## Rest API
-  retrofit: ^2.0.1
+  retrofit: ^3.0.1+1
   logger: ^1.0.0  #for logging purpose
   dio: ^4.0.1
   pretty_dio_logger: ^1.2.0-beta-1
@@ -66,13 +66,14 @@ dependencies:
   like_button: ^2.0.2
   overlay_support: ^1.2.0
   keyboard_dismisser: ^2.0.0
-  photo_view: ^0.12.0
+  photo_view: ^0.13.0
   dotted_line: ^3.0.0
   animated_text_kit: ^4.1.1
   swipe_cards: ^1.0.0
-  flutter_local_notifications: ^8.2.0
-  flutter_reaction_button: ^1.0.8
-  share_plus: ^3.0.4
+  flutter_local_notifications: ^9.4.0
+  flutter_reaction_button: ^2.0.0+1
+  share_plus: ^4.0.1
+  flutter_html: ^3.0.0-alpha.2
 
   ## Loading process
   flutter_spinkit: ^5.1.0
@@ -85,7 +86,7 @@ dependencies:
   scrollable_positioned_list: ^0.2.0-nullsafety.0
 
   ## WebView
-  webview_flutter: ^2.0.9
+  webview_flutter: ^3.0.1
   #  flutter_webview_plugin: ^0.4.0
   #  flutter_inappwebview: ^5.3.2
 
@@ -100,25 +101,24 @@ dependencies:
 
   #####  Data
   intl: ^0.17.0
-  flutter_html: ^2.1.0
   hive: ^2.0.2
   hive_flutter: ^1.1.0
   cached_network_image: ^3.1.0
   timeago: ^3.0.2
   url_launcher: ^6.0.10
 
-  #####  Resource
+  #####  Resource & Config
   font_awesome_flutter: ^9.1.0
-  flutter_svg: ^0.22.0
-  image_picker: 0.8.4+4
+  flutter_svg: ^1.0.3
+  image_picker: ^0.8.4+11
+  package_info_plus: ^1.3.0
 
   #####  Firebase
   firebase_core: ^1.13.1
   firebase_messaging: ^11.2.10
 
-  #package_info for IOS: Clean the Xcode build folder with: XCode Menu -> Product -> (Holding Option Key) Clean build folder.
-  #  package_info: ^2.0.2
-  package_info_plus: ^1.3.0
+  #####  Testing
+  mockito: ^5.1.0
 
   #package internal import
   logger_and_error:
@@ -132,17 +132,14 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.0
   breakpoint: ^1.2.0
   build_runner: ^2.0.6
-  retrofit_generator: ^2.0.1
+  retrofit_generator: ^3.0.1+1
   flutter_gen_runner: ^4.1.5
   hive_generator: ^1.0.1
   flutter_lints: ^1.0.4
   auto_route_generator: ^3.2.3
-  #  mockito: ^5.0.0
-  # BEGIN GENERATE MODEL
-  # Auto generate map model from json with command: flutter packages pub run build_runner build --delete-conflicting-outputs
-  # build_runner:
-  # json_serializable:
-  # END GENERATE MODEL
+  test: ^1.19.5
+  bloc_test: ^9.0.3
+
 
 # BEGIN CONFIG LAUNCHER ICON
 # After config then run command: flutter pub pub run flutter_launcher_icons:main

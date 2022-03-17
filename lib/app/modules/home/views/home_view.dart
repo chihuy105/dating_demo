@@ -24,76 +24,18 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
-  _buildBtn(icon, color, onPress) {
-    return BtnCircleIcon(
-      icon,
-      size: 55,
-      backgroundColor: Colors.transparent,
-      borderColor: color,
-      iconSize: 30,
-      iconColor: color,
-      onPress: onPress,
-    );
-  }
-
-  Widget _buildSwipe(BuildContext context, state){
-    logger.i('_buildSwipe');
-
-    if (state is UserListLoading && state.isFirstFetch){
-      return const CircularProgressIndicator();
-    }
-    var list = <UserEntity>[];
-    if(state is UserListLoading){
-      list = state.oldList;
-    }else if (state is UserListLoaded){
-      list = state.userList;
-    }
-
-    return SwipeCards(
-      matchEngine: matchEngine,
-      itemBuilder: (BuildContext context, int index) {
-        var userEntity = list
-            .getOrNull(index);
-        return userEntity == null?Gaps.empty : UserCard(
-          userEntity: userEntity,
-          key: ValueKey(userEntity.id),
-        );
-      },
-      onStackFinished: () {},
-      itemChanged: (SwipeItem item, int index) {
-        if ((index % 2) != 0) {
-          context.read<UserListCubit>().loadData();
-        }
-      },
-      upSwipeAllowed: true,
-      fillSpace: true,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<UserListCubit>(
         create: (context) {
-          return UserListCubit(userService)..loadData();
+          return UserListCubit(userService)
+            ..loadData();
         },
         child: SafeArea(
             child: Column(
               children: [
-                BlocConsumer<UserListCubit, UserListState>(
-                    buildWhen: (last, current) => !(current is UserListLoading && current.isFirstFetch),
-                    builder: _buildSwipe,
-                    listener: (_, state) {
-                      if(state is UserListLoaded){
-                        swipeItemList.clear();
-                        swipeItemList.addAll(state.userList.mapAsList((userEntity) => SwipeItem(
-                            content: userEntity,
-                            likeAction: () => {userService.addLikedUserData(userEntity)},
-                            superlikeAction: () => {userService.addLikedUserData(userEntity)},
-                            nopeAction: () => {userService.addSecondLookUserData(userEntity)})));
-                      }
-                    },
-                ).px16().expand(),
+                _buildSwipeBloc().px16().expand(),
                 Gaps.vGap16,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,6 +83,76 @@ class _HomeViewState extends State<HomeView> {
               ],
             )),
       ),
+    );
+  }
+
+  _buildBtn(icon, color, onPress) {
+    return BtnCircleIcon(
+      icon,
+      size: 55,
+      backgroundColor: Colors.transparent,
+      borderColor: color,
+      iconSize: 30,
+      iconColor: color,
+      onPress: onPress,
+    );
+  }
+
+  Widget _buildSwipe(BuildContext context, state) {
+    logger.i('_buildSwipe');
+
+    if (state is UserListLoading && state.isFirstFetch) {
+      return const CircularProgressIndicator();
+    }
+    var list = <UserEntity>[];
+    if (state is UserListLoading) {
+      list = state.oldList;
+    } else if (state is UserListLoaded) {
+      list = state.userList;
+    }
+
+    return SwipeCards(
+      matchEngine: matchEngine,
+      itemBuilder: (BuildContext context, int index) {
+        var userEntity = list
+            .getOrNull(index);
+        return userEntity == null ? Gaps.empty : UserCard(
+          userEntity: userEntity,
+          key: ValueKey(userEntity.id),
+        );
+      },
+      onStackFinished: () {},
+      itemChanged: (SwipeItem item, int index) {
+        if ((index % 2) != 0) {
+          context.read<UserListCubit>().loadData();
+        }
+      },
+      upSwipeAllowed: true,
+      fillSpace: true,
+    );
+  }
+
+  Widget _buildSwipeBloc() {
+    return BlocConsumer<UserListCubit, UserListState>(
+      buildWhen: (last, current) => (last is UserListLoading && last.isFirstFetch),
+      builder: _buildSwipe,
+      listenWhen: (last, current) => current is UserListLoaded,
+      listener: (_, state) {
+        if (state is UserListLoaded) {
+          swipeItemList.addAll(state.newList.mapAsList((userEntity) =>
+              SwipeItem(
+                  content: userEntity,
+                  likeAction: () => {userService.addLikedUserData(userEntity)},
+                  superlikeAction: () =>
+                  {
+                    userService.addLikedUserData(userEntity)
+                  },
+                  nopeAction: () =>
+                  {
+                    userService.addSecondLookUserData(userEntity)
+                  })));
+        }
+      },
     );
   }
 }
