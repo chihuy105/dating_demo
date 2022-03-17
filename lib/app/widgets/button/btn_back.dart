@@ -46,7 +46,7 @@ class BtnBack extends StatelessWidget {
 
     return BtnCircleIcon(
       Assets.icons.common.icBack.svg(width: size, height: size, color: iconColorUse),
-      onPress: onPress ?? () => Get.back(),
+      onPress: onPress ?? () => AutoRouter.of(context).navigateBack(),
       backgroundColor: backgroundColorUse,
       iconColor: iconColorUse,
     );

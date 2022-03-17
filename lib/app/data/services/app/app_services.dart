@@ -31,7 +31,7 @@ class AppServices {
 
     FirebasePushNotification.instance.init();
 
-    Get.put<AppRoute>(AppRoute());
+    Get.put<AppAutoRoute>(AppAutoRoute());
 
     logger.i('SERVICE all started...');
   }

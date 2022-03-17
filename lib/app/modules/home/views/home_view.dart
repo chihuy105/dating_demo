@@ -2,7 +2,6 @@ import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/modules/home/bloc/user_list_cubit.dart';
 import 'package:dating_demo/app/modules/home/views/user_card.dart';
 import 'package:swipe_cards/swipe_cards.dart';
-import '../controllers/home_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -64,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         style: AppButton.textStyle(context,
                             backgroundColor: Colors.transparent),
-                        onPressed: () => Get.toNamed(Routes.SECOND_LOOK),
+                        onPressed: () => AutoRouter.of(context).pushNamed(Routes.LIKED_LIST),
                       ).expand(),
                       Gaps.hGap16,
                       Btn(
@@ -75,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         style: AppButton.textStyle(context,
                             backgroundColor: Colors.transparent),
-                        onPressed: () => Get.toNamed(Routes.LIKED_LIST),
+                        onPressed: () => AutoRouter.of(context).pushNamed(Routes.SECOND_LOOK),
                       ).expand(),
                     ],
                   ).px16(),
@@ -102,7 +101,7 @@ class _HomeViewState extends State<HomeView> {
     logger.i('_buildSwipe');
 
     if (state is UserListLoading && state.isFirstFetch) {
-      return const CircularProgressIndicator();
+      return const Center(child: CircularProgressIndicator());
     }
     var list = <UserEntity>[];
     if (state is UserListLoading) {

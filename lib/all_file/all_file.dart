@@ -3,7 +3,8 @@
 export 'package:dating_demo/all_file/packages_import.dart';
 
 // Navigation
-export 'package:dating_demo/app/routes/app_route.gr.dart';
+export 'package:dating_demo/app/routes/app_auto_route.gr.dart';
+export 'package:dating_demo/app/routes/app_routes.dart';
 
 // Widget
 export 'package:dating_demo/all_file/widget_import.dart';

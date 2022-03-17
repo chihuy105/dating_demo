@@ -1,7 +1,7 @@
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/core/languages/app_translation.dart';
 import 'package:dating_demo/app/data/repository/user/user_api.dart';
-import 'package:dating_demo/app/routes/app_route.gr.dart';
+import 'package:dating_demo/app/routes/app_auto_route.gr.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
@@ -23,7 +23,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final _appRouter = Get.find<AppRoute>();
+  final _appRouter = Get.find<AppAutoRoute>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,22 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/widgets/user/user_item.dart';
 
-import '../controllers/second_look_controller.dart';
-
-class SecondLookView extends GetView<SecondLookController> {
+class SecondLookView extends StatefulWidget {
   const SecondLookView({Key? key}) : super(key: key);
+
+  @override
+  State<SecondLookView> createState() => _SecondLookViewState();
+}
+
+class _SecondLookViewState extends State<SecondLookView> {
+
+  final userService = Get.find<UserService>();
+  List<UserEntity>? secondLookUserList;
+
+  @override
+  void initState() {
+    secondLookUserList = userService.getSecondLookUserList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +24,15 @@ class SecondLookView extends GetView<SecondLookController> {
       appBar: AppBar(
         title: 'Second Look'.text.black.make(),
         centerTitle: true,
-        leading: BtnBack(),
+        leading: const BtnBack(),
       ),
       body: Center(
         child: ListView.builder(
-            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemCount: controller.userList.length,
+            itemCount: secondLookUserList?.length,
             itemBuilder: (context, index) {
               return UserItem(
-                  userEntity: controller.userList.getOrNull(index),
+                userEntity: secondLookUserList.getOrNull(index),
               );
             }),
       ),
