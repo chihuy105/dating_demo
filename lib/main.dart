@@ -1,5 +1,6 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:dating_demo/app/core/languages/app_translation.dart';
+import 'package:dating_demo/app/routes/app_route.gr.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
@@ -11,23 +12,8 @@ Future<void> main() async {
   return runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void setState(VoidCallback fn) {
-    if (mounted) {
-      super.setState(fn);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class MyApp extends StatelessWidget {
+  final _appRouter = Get.find<AppRoute>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +23,8 @@ class _MyAppState extends State<MyApp> {
         systemNavigationBarColor: Colors.grey,
       ),
       child: OverlaySupport.global(
-          child: GetMaterialApp(
-            translations: Languages(),
+          child: GetMaterialApp.router(
+            translations: AppTranslation(),
             locale: const Locale('vi', 'VN'),
             fallbackLocale: const Locale('en', 'US'),
             title: AppConfig.APP_NAME,
@@ -50,12 +36,11 @@ class _MyAppState extends State<MyApp> {
               return child;
             },
             themeMode: ThemeMode.light,
-            darkTheme: ThemeProvider.getTheme(isDarkMode: true),
-            theme: ThemeProvider.getTheme(isDarkMode: false),
+            darkTheme: AppTheme.getTheme(isDarkMode: true),
+            theme: AppTheme.getTheme(isDarkMode: false),
             debugShowCheckedModeBanner: false,
-            initialBinding: AppBindings.bindings,
-            initialRoute: AppPages.INITIAL,
-            getPages: AppPages.routes,
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
           )),
     );
   }
