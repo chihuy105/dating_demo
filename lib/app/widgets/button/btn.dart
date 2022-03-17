@@ -57,7 +57,7 @@ class Btn extends StatelessWidget {
     final childWidget = text == null
         ? child
         : text?.text
-            .size(fontSize ?? AppTextStyle.DEFAULT_FONT_SIZE)
+            .size(fontSize ?? AppTextTheme.DEFAULT_FONT_SIZE)
             .fontWeight(fontWeight ?? FontWeight.w400)
             .make();
 

@@ -1,12 +1,12 @@
 import 'package:dating_demo/all_file/all_file.dart';
 
-class AppTextStyle {
-  AppTextStyle._();
+class AppTextTheme {
+  AppTextTheme._();
 
   static const double DEFAULT_FONT_SIZE = Dimens.text_XL;
 
   static TextTheme getTextTheme({bool isDarkMode = false}) {
-    var textDynamic = isDarkMode ? AppTextStyle.dark_text : AppTextStyle.text;
+    var textDynamic = isDarkMode ? AppTextTheme.dark_text : AppTextTheme.text;
     return TextTheme(
       bodyText2: textDynamic.copyWith(fontSize: 14),
       bodyText1: textDynamic.copyWith(fontSize: 14),

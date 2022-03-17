@@ -12,6 +12,8 @@ export 'dart:convert';
 export 'package:dio/dio.dart' hide Headers, MultipartFile;
 export 'package:retrofit/http.dart';
 
+export 'package:auto_route/auto_route.dart';
+
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:overlay_support/overlay_support.dart';
 

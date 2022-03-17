@@ -2,25 +2,22 @@ import 'package:flutter/services.dart';
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:flutter/cupertino.dart';
 
-class ThemeProvider {
+class AppTheme {
   static ThemeData getTheme({bool isDarkMode = false}) {
+    var dynamicAppMainColor = isDarkMode ? AppColor.dark_app_main : AppColor.app_main;
     return ThemeData(
         brightness: isDarkMode ? Brightness.dark : Brightness.light,
 
-        primaryColor: isDarkMode ? AppColor.dark_app_main : AppColor.app_main,
-        // accentColor: isDarkMode ? AppColor.dark_accent : AppColor.accent,
-        bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
+        primaryColor: dynamicAppMainColor,
+        bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent),
 
         // Icon color
         iconTheme: isDarkMode
-            ? IconThemeData(color: AppColor.dark_icon)
-            : IconThemeData(color: AppColor.icon),
+            ? const IconThemeData(color: AppColor.dark_icon)
+            : const IconThemeData(color: AppColor.icon),
         primaryIconTheme: isDarkMode
-            ? IconThemeData(color: AppColor.dark_app_main)
-            : IconThemeData(color: AppColor.app_main),
-        // accentIconTheme: isDarkMode
-        //     ? IconThemeData(color: AppColor.dark_accent)
-        //     : IconThemeData(color: AppColor.accent),
+            ? const IconThemeData(color: AppColor.dark_app_main)
+            : const IconThemeData(color: AppColor.app_main),
 
         errorColor: isDarkMode ? AppColor.dark_red : AppColor.red,
         primarySwatch: isDarkMode
@@ -28,7 +25,7 @@ class ThemeProvider {
             : AppColor.app_main_swatch,
 
         // Tab indicator color
-        indicatorColor: isDarkMode ? AppColor.dark_app_main : AppColor.app_main,
+        indicatorColor: dynamicAppMainColor,
 
         // page background color
         scaffoldBackgroundColor: isDarkMode
@@ -59,16 +56,15 @@ class ThemeProvider {
             : AppColor.hint_color,
 
         // Text selection color (copy and paste menu of input box)
-        fontFamily: 'SFUIText',
+        // fontFamily: 'SFUIText',
+        textTheme: AppTextTheme.getTextTheme(isDarkMode: isDarkMode),
+        primaryTextTheme: AppTextTheme.getTextTheme(isDarkMode: isDarkMode),
         textSelectionTheme: TextSelectionThemeData(
-            selectionColor: AppColor.app_main.withAlpha(70),
-            selectionHandleColor: AppColor.app_main),
-        textTheme: AppTextStyle.getTextTheme(isDarkMode: isDarkMode),
-        primaryTextTheme: AppTextStyle.getTextTheme(isDarkMode: isDarkMode),
-        // accentTextTheme: AppTextStyle.getTextTheme(isDarkMode: true),
+            selectionColor: dynamicAppMainColor.withAlpha(70),
+            selectionHandleColor: dynamicAppMainColor),
         inputDecorationTheme: InputDecorationTheme(
           hintStyle:
-              isDarkMode ? AppTextStyle.text_hint : AppTextStyle.dark_text_hint,
+              isDarkMode ? AppTextTheme.text_hint : AppTextTheme.dark_text_hint,
         ),
         dividerColor: AppColor.line,
         dividerTheme: DividerThemeData(

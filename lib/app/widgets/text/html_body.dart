@@ -38,7 +38,7 @@ class HtmlBody extends StatelessWidget {
       return Gaps.empty;
     }
 
-    final htmlStyle = AppTextStyle.getHtmlStyle(context);
+    final htmlStyle = AppTextTheme.getHtmlStyle(context);
     if (mapStyle != null) {
       htmlStyle.addAll(mapStyle!);
     }
