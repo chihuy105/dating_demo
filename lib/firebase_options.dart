@@ -55,6 +55,6 @@ class DefaultFirebaseOptions {
     projectId: 'datingapp-75502',
     storageBucket: 'datingapp-75502.appspot.com',
     iosClientId: '1086338871919-qk119and9jkv9uot19eit55j0ffjc7ek.apps.googleusercontent.com',
-    iosBundleId: 'com.dating.demo',
+    iosBundleId: 'com.dating.demo.kyo',
   );
 }

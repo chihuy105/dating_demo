@@ -1,4 +1,4 @@
-package com.dating.demo
+package com.dating.demo.kyo
 
 import io.flutter.embedding.android.FlutterActivity
 
