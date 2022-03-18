@@ -4,8 +4,12 @@ import 'package:dating_demo/all_file/all_file.dart';
 
 class UserRepo extends GetxService {
 
-  final userApi = Get.find<UserApi>();
+  late final UserApi _userApi;
   Box? userBox;
+
+  UserRepo({UserApi? userApi}){
+    _userApi = userApi ?? Get.find<UserApi>();
+  }
 
   @override
   void onInit() async {
@@ -13,8 +17,8 @@ class UserRepo extends GetxService {
     super.onInit();
   }
 
-  Future<List<UserEntity>> fetchUserList({int? page = 0}) {
-    return userApi.getUsers(page: page.toString()).then((value) {
+  Future<List<UserEntity>> fetchUserList({int? page = 1}) {
+    return _userApi.getUsers(page: page.toString()).then((value) {
       return Future.value(value?.data);
     });
   }
@@ -74,7 +78,5 @@ class UserRepo extends GetxService {
     }
     userBox?.put(AppConstant.KEY_USER_SECOND_LOOK_LIST, list);
   }
-
-
 
 }

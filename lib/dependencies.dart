@@ -5,8 +5,9 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future<void> setupAppDependencies() async {
   logger.i('SERVICE starting ...');
+
   await _appService();
-  await _appDataService();
+  await _appDataProvider();
 
   logger.i('SERVICE all started...');
 }
@@ -37,7 +38,7 @@ Future<void> _appService() async {
 }
 
 
-Future<void> _appDataService() async {
+Future<void> _appDataProvider() async {
 
   Get.lazyPut<DioModule>(() => DioModule(), fenix: true);
 

@@ -1,5 +1,6 @@
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/core/languages/app_translation.dart';
+import 'package:dating_demo/app/core/utils/bloc_observer.dart';
 import 'package:dating_demo/dependencies.dart';
 import 'package:flutter/services.dart';
 
@@ -7,12 +8,27 @@ Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await setupAppDependencies();
+  BlocOverrides.runZoned(
+        () {
+      runZonedGuarded(
+            () async {
+          runApp(MyApp(appRouter: Get.find<AppAutoRoute>(),));
+        },
+        _onError,
+      );
+    },
+    blocObserver: MyBlocObserver(),
+  );
+}
 
-  return runApp(MyApp());
+Future<void> _onError(Object error, StackTrace stack) async {
+  logger.e('Application', error, stack);
 }
 
 class MyApp extends StatelessWidget {
-  final _appRouter = Get.find<AppAutoRoute>();
+  final AppAutoRoute appRouter;
+
+  const MyApp({Key? key, required this.appRouter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +54,8 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.getTheme(isDarkMode: true),
             theme: AppTheme.getTheme(isDarkMode: false),
             debugShowCheckedModeBanner: false,
-            routerDelegate: _appRouter.delegate(),
-            routeInformationParser: _appRouter.defaultRouteParser(),
+            routerDelegate: appRouter.delegate(),
+            routeInformationParser: appRouter.defaultRouteParser(),
           )),
     );
   }
