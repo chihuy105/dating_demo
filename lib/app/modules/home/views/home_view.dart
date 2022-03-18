@@ -13,7 +13,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
 
   final swipeItemList = <SwipeItem>[];
-  final userService = Get.find<UserService>();
+  final userService = Get.find<UserRepo>();
 
   late MatchEngine matchEngine;
 
@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: BlocProvider<UserListCubit>(
         create: (context) {
-          return UserListCubit(userService)
+          return UserListCubit()
             ..loadData();
         },
         child: SafeArea(

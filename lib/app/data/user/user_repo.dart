@@ -1,17 +1,16 @@
 import 'dart:math';
 
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/repository/user/user_api.dart';
 
-class UserService extends GetxService {
+class UserRepo extends GetxService {
 
   final userApi = Get.find<UserApi>();
   Box? userBox;
 
   @override
-  void onReady() async {
+  void onInit() async {
     userBox = await Hive.openBox(AppConstant.KEY_USER_BOX);
-    super.onReady();
+    super.onInit();
   }
 
   Future<List<UserEntity>> fetchUserList({int? page = 0}) {

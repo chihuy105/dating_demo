@@ -12,14 +12,11 @@ export 'package:dating_demo/all_file/widget_import.dart';
 // UI
 export 'package:dating_demo/all_file/modules_import.dart';
 
-// Data model
-export 'package:dating_demo/all_file/model_import.dart';
-
 // Controller
 export 'package:dating_demo/all_file/controllers_import.dart';
 
-// Repo
-export 'package:dating_demo/all_file/repo_import.dart';
+// Modal & Repo & API
+export 'package:dating_demo/all_file/data_import.dart';
 
 // Service
 export 'package:dating_demo/all_file/services_import.dart';

@@ -1,4 +1,3 @@
-import 'package:dating_demo/app/data/model/user/user_resp.dart';
 import 'package:dating_demo/all_file/all_file.dart';
 
 part 'user_api.g.dart';

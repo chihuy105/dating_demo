@@ -10,7 +10,7 @@ class LikedListView extends StatefulWidget {
 
 class _LikedListViewState extends State<LikedListView> {
 
-  final userService = Get.find<UserService>();
+  final userService = Get.find<UserRepo>();
   List<UserEntity>? list;
 
   @override

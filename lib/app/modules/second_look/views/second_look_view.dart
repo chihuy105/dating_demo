@@ -9,7 +9,7 @@ class SecondLookView extends StatefulWidget {
 
 class _SecondLookViewState extends State<SecondLookView> {
 
-  final userService = Get.find<UserService>();
+  final userService = Get.find<UserRepo>();
   List<UserEntity>? secondLookUserList;
 
   @override

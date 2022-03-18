@@ -1,5 +1,4 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/services/user/user_service.dart';
 import 'package:dating_demo/app/widgets/image/blend_bottom.dart';
 
 class UserCard extends StatefulWidget {
@@ -12,7 +11,7 @@ class UserCard extends StatefulWidget {
 }
 
 class _UserCardState extends State<UserCard> {
-  final _userService = Get.find<UserService>();
+  final _userService = Get.find<UserRepo>();
   final _ageLD = Rx<String?>('');
 
   @override
