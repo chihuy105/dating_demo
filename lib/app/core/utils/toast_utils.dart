@@ -1,13 +1,36 @@
 import 'package:dating_demo/all_file/all_file.dart';
+import 'package:dating_demo/app/widgets/toast/ios_toast.dart';
 
 class ToastUtils {
-  static showToast(String msg) {
-    if (!msg.isNullOrEmpty())
-      toast(msg);
+  static OverlaySupportEntry? _curToast;
+
+  static void dismissToast() {
+    _curToast?.dismiss();
+  }
+
+  static showToast({required BuildContext context, required String msg}) {
+    if (!msg.isNullOrEmpty()) {
+      _curToast?.dismiss();
+      _curToast = showOverlay(
+        (_, t) {
+          return Theme(
+            data: Theme.of(context),
+            child: Opacity(
+              opacity: t,
+              child: IosStyleToast(
+                msg: msg,
+              ),
+            ),
+          );
+        },
+        key: const ValueKey('overlay_toast'),
+      );
+    }
   }
 
   static show(String msg) {
-    showSimpleNotification(
+    dismissToast();
+    _curToast = showSimpleNotification(
         MessageNotification(
           subTitle: msg,
         ),
@@ -16,15 +39,11 @@ class ToastUtils {
   }
 
   static done(String msg) {
-    showSimpleNotification(
-        MessageNotification(
-            subTitle: msg,
-            leading: Icon(
-              FontAwesomeIcons.solidCheckCircle,
-              color: AppColor.getSuccessColor(),
-            )),
-        background: Colors.transparent,
-        elevation: 0);
+    dismissToast();
+    _curToast = _showSimpleNotification(
+        msg: msg,
+        icon: FontAwesomeIcons.solidCheckCircle,
+        color: AppColor.getSuccessColor());
   }
 
   static error({String? msg, dynamic error}) {
@@ -36,27 +55,29 @@ class ToastUtils {
     logger.e(StackTrace.current);
     // print(StackTrace.current);
 
-    final String errMsg = msg ?? 'errorMsg'.tr;
-
-    showSimpleNotification(
-        MessageNotification(
-          subTitle: errMsg,
-          leading: Icon(
-            FontAwesomeIcons.exclamationCircle,
-            color: AppColor.getErrorColor(),
-          ),
-        ),
-        background: Colors.transparent,
-        elevation: 0);
+    dismissToast();
+    _curToast = _showSimpleNotification(
+        msg: msg ?? 'errorMsg'.tr,
+        icon: FontAwesomeIcons.exclamationCircle,
+        color: AppColor.getErrorColor());
   }
 
   static warning({String? msg}) {
-    showSimpleNotification(
+    dismissToast();
+    _curToast = _showSimpleNotification(
+        msg: msg ?? 'errorMsg'.tr,
+        icon: FontAwesomeIcons.exclamationCircle,
+        color: AppColor.getWarningColor());
+  }
+
+  static OverlaySupportEntry _showSimpleNotification(
+      {required String msg, required IconData icon, required Color color}) {
+    return showSimpleNotification(
         MessageNotification(
-          subTitle: msg ?? 'errorMsg'.tr,
+          subTitle: msg,
           leading: Icon(
-            FontAwesomeIcons.exclamationTriangle,
-            color: AppColor.getWarningColor(),
+            icon,
+            color: color,
           ),
         ),
         background: Colors.transparent,
@@ -80,14 +101,13 @@ class MessageNotification extends StatelessWidget {
 
     final Widget titleWidget;
     final Widget? subTitleWidget;
-    if(title == null){
+    if (title == null) {
       titleWidget = subTitle?.text.color(textColor).make() ?? Gaps.empty;
       subTitleWidget = null;
-    }else{
+    } else {
       titleWidget = title?.text.lg.medium.color(textColor).make() ?? Gaps.empty;
       subTitleWidget = subTitle?.text.color(textColor).make() ?? Gaps.empty;
     }
-
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 4),

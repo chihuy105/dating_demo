@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-
+import 'package:dating_demo/app/core/utils/mixin/mixin_auto_route_resume.dart';
 
 class LikedListView extends StatefulWidget {
   const LikedListView({Key? key}) : super(key: key);
@@ -8,8 +8,7 @@ class LikedListView extends StatefulWidget {
   State<LikedListView> createState() => _LikedListViewState();
 }
 
-class _LikedListViewState extends State<LikedListView> {
-
+class _LikedListViewState extends State<LikedListView> with AutoRouteTabResume {
   final userService = Get.find<UserRepo>();
   List<UserEntity>? list;
 
@@ -17,6 +16,13 @@ class _LikedListViewState extends State<LikedListView> {
   void initState() {
     list = userService.getLikedUserList();
     super.initState();
+  }
+
+  @override
+  void onResume() {
+    setState(() {
+      list = userService.getLikedUserList();
+    });
   }
 
   @override

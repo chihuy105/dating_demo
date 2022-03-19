@@ -17,7 +17,7 @@ Future<void> main() async {
         _onError,
       );
     },
-    blocObserver: MyBlocObserver(),
+    // blocObserver: MyBlocObserver(),
   );
 }
 

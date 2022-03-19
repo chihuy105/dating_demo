@@ -3,6 +3,12 @@ import 'package:swipe_cards/swipe_cards.dart';
 
 part 'user_list_state.dart';
 
+/// This bloc will check all the case for a paging logic
+/// 1. Return data
+/// 2. Return empty data
+/// 3. Return Error when crash
+/// 4. Load by page
+///
 class UserListCubit extends Cubit<UserListState> {
   late final UserRepo _userService;
   final swipeItemList = <SwipeItem>[];
@@ -26,7 +32,7 @@ class UserListCubit extends Cubit<UserListState> {
 
       emit(UserListLoaded(newList: fetchUserList, data: state.data.copyWith(list: [...list,...fetchUserList])));
     } catch (e) {
-      logger.e(e);
+      logger.e('UserList loadData fail');
       emit(UserListError(error: 'UserList loadData fail', data: state.data));
     }
   }

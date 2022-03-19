@@ -2,10 +2,9 @@
 // in dating_demo/test/user_list_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:dating_demo/all_file/all_file.dart' as _i3;
-import 'package:dating_demo/app/data/user/user_api.dart' as _i2;
+import 'package:dating_demo/all_file/all_file.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -18,36 +17,31 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeUserApi_0 extends _i1.Fake implements _i2.UserApi {}
+class _FakeInternalFinalCallback_0<T> extends _i1.Fake
+    implements _i2.InternalFinalCallback<T> {}
 
-class _FakeInternalFinalCallback_1<T> extends _i1.Fake
-    implements _i3.InternalFinalCallback<T> {}
-
-/// A class which mocks [UserService].
+/// A class which mocks [UserRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUserService extends _i1.Mock implements _i3.UserRepo {
-  MockUserService() {
+class MockUserRepo extends _i1.Mock implements _i2.UserRepo {
+  MockUserRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.UserApi get userApi => (super.noSuchMethod(Invocation.getter(#userApi),
-      returnValue: _FakeUserApi_0()) as _i2.UserApi);
-  @override
-  set userBox(_i3.Box<dynamic>? _userBox) =>
+  set userBox(_i2.Box<dynamic>? _userBox) =>
       super.noSuchMethod(Invocation.setter(#userBox, _userBox),
           returnValueForMissingStub: null);
   @override
-  _i3.InternalFinalCallback<void> get onStart =>
+  _i2.InternalFinalCallback<void> get onStart =>
       (super.noSuchMethod(Invocation.getter(#onStart),
-              returnValue: _FakeInternalFinalCallback_1<void>())
-          as _i3.InternalFinalCallback<void>);
+              returnValue: _FakeInternalFinalCallback_0<void>())
+          as _i2.InternalFinalCallback<void>);
   @override
-  _i3.InternalFinalCallback<void> get onDelete =>
+  _i2.InternalFinalCallback<void> get onDelete =>
       (super.noSuchMethod(Invocation.getter(#onDelete),
-              returnValue: _FakeInternalFinalCallback_1<void>())
-          as _i3.InternalFinalCallback<void>);
+              returnValue: _FakeInternalFinalCallback_0<void>())
+          as _i2.InternalFinalCallback<void>);
   @override
   bool get initialized =>
       (super.noSuchMethod(Invocation.getter(#initialized), returnValue: false)
@@ -57,36 +51,36 @@ class MockUserService extends _i1.Mock implements _i3.UserRepo {
       (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
           as bool);
   @override
-  void onReady() => super.noSuchMethod(Invocation.method(#onReady, []),
+  void onInit() => super.noSuchMethod(Invocation.method(#onInit, []),
       returnValueForMissingStub: null);
   @override
-  _i4.Future<List<_i3.UserEntity>> fetchUserList({int? page = 0}) =>
+  _i3.Future<List<_i2.UserEntity>> fetchUserList({int? page = 1}) =>
       (super.noSuchMethod(Invocation.method(#fetchUserList, [], {#page: page}),
               returnValue:
-                  Future<List<_i3.UserEntity>>.value(<_i3.UserEntity>[]))
-          as _i4.Future<List<_i3.UserEntity>>);
+                  Future<List<_i2.UserEntity>>.value(<_i2.UserEntity>[]))
+          as _i3.Future<List<_i2.UserEntity>>);
   @override
-  _i4.Future<int> getUserAge(String? userId) =>
+  _i3.Future<int> getUserAge(String? userId) =>
       (super.noSuchMethod(Invocation.method(#getUserAge, [userId]),
-          returnValue: Future<int>.value(0)) as _i4.Future<int>);
+          returnValue: Future<int>.value(0)) as _i3.Future<int>);
   @override
-  List<_i3.UserEntity> getLikedUserList() =>
+  List<_i2.UserEntity> getLikedUserList() =>
       (super.noSuchMethod(Invocation.method(#getLikedUserList, []),
-          returnValue: <_i3.UserEntity>[]) as List<_i3.UserEntity>);
+          returnValue: <_i2.UserEntity>[]) as List<_i2.UserEntity>);
   @override
-  void addLikedUserData(_i3.UserEntity? userEntity) =>
+  void addLikedUserData(_i2.UserEntity? userEntity) =>
       super.noSuchMethod(Invocation.method(#addLikedUserData, [userEntity]),
           returnValueForMissingStub: null);
   @override
-  List<_i3.UserEntity> getSecondLookUserList() =>
+  List<_i2.UserEntity> getSecondLookUserList() =>
       (super.noSuchMethod(Invocation.method(#getSecondLookUserList, []),
-          returnValue: <_i3.UserEntity>[]) as List<_i3.UserEntity>);
+          returnValue: <_i2.UserEntity>[]) as List<_i2.UserEntity>);
   @override
-  void addSecondLookUserData(_i3.UserEntity? userEntity) => super.noSuchMethod(
+  void addSecondLookUserData(_i2.UserEntity? userEntity) => super.noSuchMethod(
       Invocation.method(#addSecondLookUserData, [userEntity]),
       returnValueForMissingStub: null);
   @override
-  void onInit() => super.noSuchMethod(Invocation.method(#onInit, []),
+  void onReady() => super.noSuchMethod(Invocation.method(#onReady, []),
       returnValueForMissingStub: null);
   @override
   void onClose() => super.noSuchMethod(Invocation.method(#onClose, []),
