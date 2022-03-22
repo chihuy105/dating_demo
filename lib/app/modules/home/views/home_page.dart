@@ -1,13 +1,13 @@
 import 'package:dating_demo/all_file/all_file.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();

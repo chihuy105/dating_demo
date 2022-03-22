@@ -1,14 +1,14 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/core/utils/mixin/mixin_auto_route_resume.dart';
+import 'package:dating_demo/core/utils/mixin/mixin_auto_route_resume.dart';
 
-class SecondLookView extends StatefulWidget {
-  const SecondLookView({Key? key}) : super(key: key);
+class SecondLookPage extends StatefulWidget {
+  const SecondLookPage({Key? key}) : super(key: key);
 
   @override
-  State<SecondLookView> createState() => _SecondLookViewState();
+  State<SecondLookPage> createState() => _SecondLookPageState();
 }
 
-class _SecondLookViewState extends State<SecondLookView>
+class _SecondLookPageState extends State<SecondLookPage>
     with AutoRouteTabResume {
   final userService = Get.find<UserRepo>();
   List<UserEntity>? secondLookUserList;

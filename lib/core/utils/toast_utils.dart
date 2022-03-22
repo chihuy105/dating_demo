@@ -12,7 +12,7 @@ class ToastUtils {
     if (!msg.isNullOrEmpty()) {
       _curToast?.dismiss();
       _curToast = showOverlay(
-        (_, t) {
+            (_, t) {
           return Theme(
             data: Theme.of(context),
             child: Opacity(

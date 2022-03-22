@@ -3,14 +3,14 @@ import 'package:dating_demo/app/modules/swipe/views/user_card.dart';
 import 'package:dating_demo/app/modules/swipe/bloc/user_list_cubit.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
-class SwipeView extends StatefulWidget {
-  const SwipeView({Key? key}) : super(key: key);
+class SwipePage extends StatefulWidget {
+  const SwipePage({Key? key}) : super(key: key);
 
   @override
-  State<SwipeView> createState() => _HomeViewState();
+  State<SwipePage> createState() => _SwipePageState();
 }
 
-class _HomeViewState extends State<SwipeView> {
+class _SwipePageState extends State<SwipePage> {
   final swipeItemList = <SwipeItem>[];
   final userService = Get.find<UserRepo>();
 

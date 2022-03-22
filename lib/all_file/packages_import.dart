@@ -3,8 +3,8 @@
 export 'package:flutter/material.dart' hide Path;
 export 'dart:async';
 export 'dart:io';
-export 'package:dating_demo/app/core/utils/utils.dart';
-export 'package:dating_demo/app/core/utils/utils_dialog.dart';
+export 'package:dating_demo/core/utils/utils.dart';
+export 'package:dating_demo/core/utils/utils_dialog.dart';
 export 'dart:convert';
 
 //// *** Third Party Packages ***

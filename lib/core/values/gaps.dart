@@ -1,4 +1,4 @@
-import 'package:dating_demo/app/core/values/dimens.dart';
+import 'package:dating_demo/core/values/dimens.dart';
 import 'package:flutter/material.dart';
 
 /// interval

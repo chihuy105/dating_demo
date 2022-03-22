@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/core/languages/app_translation.dart';
+import 'package:dating_demo/core/languages/app_translation.dart';
 import 'package:dating_demo/dependencies.dart';
 import 'package:flutter/services.dart';
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               );
               return child;
             },
-            themeMode: ThemeMode.dark,
+            themeMode: ThemeMode.light,
             darkTheme: AppTheme.getTheme(isDark: true),
             theme: AppTheme.getTheme(isDark: false),
             debugShowCheckedModeBanner: false,
