@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+// ignore: library_prefixes
 import 'package:timeago/timeago.dart' as timeAgo;
 import 'package:dating_demo/all_file/all_file.dart';
 
@@ -20,7 +21,7 @@ class TimeUtils {
   static final formatSimpleMonthDate = DateFormat('dd/MM');
   static final formatUserDateTime = DateFormat('hh:mm, dd/MM');
   static final formatUserSimpleMonthDay = DateFormat('MMMMd');
-  static final DateFormat _monthFormat = new DateFormat('MMMM yyyy');
+  static final DateFormat _monthFormat = DateFormat('MMMM yyyy');
   static final DateFormat _dayFormat = DateFormat('dd');
   static final DateFormat _firstDayFormat = DateFormat('MMM dd');
   static final DateFormat _fullDayFormat = DateFormat('EEE MMM dd, yyyy');
@@ -57,8 +58,9 @@ class TimeUtils {
       return null;
     }
     if (DateTime.parse(datetime).isAfter(DateTime.now())) return null;
-    if (DateTime.now().difference(DateTime.parse(datetime)).inDays > 7)
+    if (DateTime.now().difference(DateTime.parse(datetime)).inDays > 7) {
       return getDisplayDateTime(DateTime.now());
+    }
     final fifteenAgo = DateTime.parse(datetime);
     timeAgo.setLocaleMessages('vi', timeAgo.ViMessages());
     return timeAgo.format(fifteenAgo, locale: Get.locale!.languageCode);
@@ -70,7 +72,7 @@ class TimeUtils {
 
   static DateTime? strUtcToDate(String? str, {String format = "yyyy-MM-ddTHH:mm:ssZ"}) {
     if (str == null) return null;
-    return new DateFormat(format).parseUTC(str);
+    return DateFormat(format).parseUTC(str);
   }
 
   static String getCurrentDateAsStr() {
@@ -93,7 +95,7 @@ class TimeUtils {
 
   static String formatDay(DateTime day, {String? strFormat}) {
     return strFormat != null
-        ? new DateFormat(strFormat).format(day)
+        ? DateFormat(strFormat).format(day)
         : _dayFormat.format(day);
   }
 
@@ -125,13 +127,11 @@ class TimeUtils {
     return DateTime.now();
   }
 
-  /**
-   * List of day between 1 day
-   * @range: Ex range = 3 => get 3 days on the left and 3 days on the right => total 7 days
-   */
-  static List<DateTime> daysBetween(DateTime date, int range) {
-    final first = date.subtract(new Duration(days: range));
-    final last = date.add(new Duration(days: range + 1));
+  /// List of day between 1 day
+  /// @range: Ex range = 3 => get 3 days on the left and 3 days on the right => total 7 days
+  static Future<List<DateTime>> daysBetween(DateTime date, int range) async {
+    final first = date.subtract(Duration(days: range));
+    final last = date.add(Duration(days: range + 1));
 
     return daysInRange(first, last).toList();
   }
@@ -140,7 +140,7 @@ class TimeUtils {
   static List<DateTime> daysInMonth(DateTime month) {
     var first = firstDayOfMonth(month);
     var daysBefore = first.weekday;
-    var firstToDisplay = first.subtract(new Duration(days: daysBefore));
+    var firstToDisplay = first.subtract(Duration(days: daysBefore));
     var last = lastDayOfMonth(month);
 
     var daysAfter = 7 - last.weekday;
@@ -150,7 +150,7 @@ class TimeUtils {
       daysAfter = 7;
     }
 
-    var lastToDisplay = last.add(new Duration(days: daysAfter));
+    var lastToDisplay = last.add(Duration(days: daysAfter));
     return daysInRange(firstToDisplay, lastToDisplay).toList();
   }
 
@@ -163,37 +163,37 @@ class TimeUtils {
   }
 
   static DateTime firstDayOfMonth(DateTime month) {
-    return new DateTime(month.year, month.month);
+    return DateTime(month.year, month.month);
   }
 
   static DateTime firstDayOfWeek(DateTime day) {
     /// Handle Daylight Savings by setting hour to 12:00 Noon
     /// rather than the default of Midnight
-    day = new DateTime.utc(day.year, day.month, day.day, 12);
+    day = DateTime.utc(day.year, day.month, day.day, 12);
 
     /// Weekday is on a 1-7 scale Monday - Sunday,
     /// This Calendar works from Sunday - Monday
     var decreaseNum = day.weekday % 7;
-    return day.subtract(new Duration(days: decreaseNum));
+    return day.subtract(Duration(days: decreaseNum));
   }
 
   static DateTime lastDayOfWeek(DateTime day) {
     /// Handle Daylight Savings by setting hour to 12:00 Noon
     /// rather than the default of Midnight
-    day = new DateTime.utc(day.year, day.month, day.day, 12);
+    day = DateTime.utc(day.year, day.month, day.day, 12);
 
     /// Weekday is on a 1-7 scale Monday - Sunday,
     /// This Calendar's Week starts on Sunday
     var increaseNum = day.weekday % 7;
-    return day.add(new Duration(days: 7 - increaseNum));
+    return day.add(Duration(days: 7 - increaseNum));
   }
 
   /// The last day of a given month
   static DateTime lastDayOfMonth(DateTime month) {
     var beginningNextMonth = (month.month < 12)
-        ? new DateTime(month.year, month.month + 1, 1)
-        : new DateTime(month.year + 1, 1, 1);
-    return beginningNextMonth.subtract(new Duration(days: 1));
+        ? DateTime(month.year, month.month + 1, 1)
+        : DateTime(month.year + 1, 1, 1);
+    return beginningNextMonth.subtract(const Duration(days: 1));
   }
 
   /// Returns a [DateTime] for each day the given range.
@@ -205,11 +205,11 @@ class TimeUtils {
     var offset = start.timeZoneOffset;
     while (i.isBefore(end)) {
       yield i;
-      i = i.add(new Duration(days: 1));
+      i = i.add(const Duration(days: 1));
       var timeZoneDiff = i.timeZoneOffset - offset;
       if (timeZoneDiff.inSeconds != 0) {
         offset = i.timeZoneOffset;
-        i = i.subtract(new Duration(seconds: timeZoneDiff.inSeconds));
+        i = i.subtract(Duration(seconds: timeZoneDiff.inSeconds));
       }
     }
   }
@@ -222,8 +222,8 @@ class TimeUtils {
   static bool isSameWeek(DateTime a, DateTime b) {
     /// Handle Daylight Savings by setting hour to 12:00 Noon
     /// rather than the default of Midnight
-    a = new DateTime.utc(a.year, a.month, a.day);
-    b = new DateTime.utc(b.year, b.month, b.day);
+    a = DateTime.utc(a.year, a.month, a.day);
+    b = DateTime.utc(b.year, b.month, b.day);
 
     var diff = a.toUtc().difference(b.toUtc()).inDays;
     if (diff.abs() >= 7) {
@@ -245,7 +245,7 @@ class TimeUtils {
     } else {
       month--;
     }
-    return new DateTime(year, month);
+    return DateTime(year, month);
   }
 
   static DateTime nextMonth(DateTime m) {
@@ -258,15 +258,15 @@ class TimeUtils {
     } else {
       month++;
     }
-    return new DateTime(year, month);
+    return DateTime(year, month);
   }
 
   static DateTime previousWeek(DateTime w) {
-    return w.subtract(new Duration(days: 7));
+    return w.subtract(const Duration(days: 7));
   }
 
   static DateTime nextWeek(DateTime w) {
-    return w.add(new Duration(days: 7));
+    return w.add(const Duration(days: 7));
   }
 }
 

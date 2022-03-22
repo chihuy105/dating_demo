@@ -30,7 +30,7 @@ class HtmlBody extends StatelessWidget {
   final String? data;
   final Map<String, Style>? mapStyle;
 
-  HtmlBody({Key? key, this.data, this.mapStyle}) : super(key: key);
+  const HtmlBody({Key? key, this.data, this.mapStyle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -49,7 +49,6 @@ class ToastUtils {
   static error({String? msg, dynamic error}) {
     if (error != null) {
       // print('error');
-      print(error);
       logger.e(error);
     }
     logger.e(StackTrace.current);

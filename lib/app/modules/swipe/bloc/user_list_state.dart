@@ -22,10 +22,7 @@ class UserListData {
 
   @override
   String toString() {
-    return 'UserListData{' +
-        ' isFirstFetch: $isFirstFetch,' +
-        ' list: $list,' +
-        '}';
+    return 'UserListData{' ' isFirstFetch: $isFirstFetch,' ' list: $list,' '}';
   }
 
   UserListData copyWith({

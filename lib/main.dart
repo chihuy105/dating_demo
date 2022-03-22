@@ -1,6 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:dating_demo/app/core/languages/app_translation.dart';
-import 'package:dating_demo/app/core/utils/bloc_observer.dart';
 import 'package:dating_demo/dependencies.dart';
 import 'package:flutter/services.dart';
 

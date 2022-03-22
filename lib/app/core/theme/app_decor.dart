@@ -4,7 +4,7 @@ import 'package:dating_demo/all_file/all_file.dart';
 class AppDecor {
   static BoxDecoration bottomShadowDecor(
       {Color surfaceColor = Colors.transparent}) {
-    return BoxDecoration(boxShadow: <BoxShadow>[
+    return BoxDecoration(boxShadow: const <BoxShadow>[
       BoxShadow(color: Colors.grey, blurRadius: 1.0, offset: Offset(0.0, 1.0))
     ], color: surfaceColor);
   }
@@ -30,7 +30,7 @@ class AppDecor {
             color: shadowColor ?? Colors.grey.withOpacity(shadowOpacity),
             spreadRadius: spreadRadius,
             blurRadius: blurRadius,
-            offset: offset ?? Offset(0.0, 0.0)),
+            offset: offset ?? const Offset(0.0, 0.0)),
       ],
     );
   }
@@ -40,7 +40,7 @@ class AppDecor {
     return BoxDecoration(
         color: surfaceColor,
         border: Border.all(color: Theme.of(context).primaryColor),
-        borderRadius: BorderRadius.all(Radius.circular(Dimens.rad_S)));
+        borderRadius: const BorderRadius.all(Radius.circular(Dimens.rad_S)));
   }
 
   static BoxDecoration borderWhiteBox(
@@ -51,7 +51,7 @@ class AppDecor {
         color: Theme.of(context).canvasColor,
       boxShadow: [BoxShadow(
         color: Colors.black.withOpacity(0.15),
-        offset: Offset(0,0),
+        offset: const Offset(0,0),
         spreadRadius: 1,
         blurRadius: 10,
       )]
@@ -92,6 +92,6 @@ class AppDecor {
     return BoxDecoration(
         color: AppColor.getPriceColor(),
         border: Border.all(color: AppColor.getPriceBorderColor()),
-        borderRadius: BorderRadius.all(Radius.circular(Dimens.rad_XXS)));
+        borderRadius: const BorderRadius.all(Radius.circular(Dimens.rad_XXS)));
   }
 }

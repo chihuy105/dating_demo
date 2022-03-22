@@ -3,16 +3,16 @@ import 'package:dating_demo/all_file/all_file.dart';
 class BlendBottom extends StatelessWidget {
   final Widget child;
 
-  BlendBottom({Key? key,required this.child}): super(key: key);
+  const BlendBottom({Key? key,required this.child}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
       shaderCallback: (rect) {
-        return LinearGradient(
+        return const LinearGradient(
             begin: FractionalOffset.topCenter,
             end: FractionalOffset.bottomCenter,
-            colors: [
+            colors:  [
               Colors.transparent,
               Colors.black,
             ],

@@ -63,11 +63,11 @@ class AppTextTheme {
         // border: Border(bottom: BorderSide(color: Colors.grey)),
       ),
       "th": Style(
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
         backgroundColor: Colors.grey,
       ),
       "td": Style(
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
       ),
     };
   }

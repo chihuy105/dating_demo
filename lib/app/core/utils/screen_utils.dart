@@ -9,13 +9,15 @@ class ScreenUtils {
     double preHeight = Get.height;
     if (preWidth > preHeight) {
       rWidth = preHeight * percent;
-    } else
+    } else {
       rWidth = preWidth * percent;
+    }
 
     if (maxValue != null) {
       return (rWidth >= maxValue) ? maxValue : rWidth;
-    } else
+    } else {
       return rWidth;
+    }
   }
 
   static double getPercentHeight({required double percent, double? maxValue}) {
@@ -24,8 +26,9 @@ class ScreenUtils {
     double preHeight = Get.height;
     if (preWidth > preHeight) {
       rHeight = preWidth * percent;
-    } else
+    } else {
       rHeight = preHeight * percent;
+    }
 
     if (maxValue != null) {
       return (rHeight >= maxValue) ? maxValue : rHeight;

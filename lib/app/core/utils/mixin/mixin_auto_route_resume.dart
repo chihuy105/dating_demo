@@ -1,5 +1,8 @@
 import 'package:dating_demo/all_file/all_file.dart';
 
+/// Base on
+/// https://github.com/Milad-Akarie/auto_route_library/issues/518#issuecomment-970243718
+///
 mixin AutoRouteTabResume<T extends StatefulWidget> on State<T> {
   late final String _routeName;
 

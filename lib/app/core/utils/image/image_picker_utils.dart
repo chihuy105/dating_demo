@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 class FImagePickerUtils{
   static Future<Uint8List?> getBytesFromPicker()async{
     final XFile? photo = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: AppConstant.IMAGE_QUALITY );
-    var fileName = photo?.path.split('/').last;
     var dataMedia = await photo?.readAsBytes();
     return dataMedia;
   }
@@ -29,13 +28,14 @@ class FImagePickerUtils{
       var media = MultipartFile.fromBytes('media', dataMedia, filename: fileName);
       return media;
     }
+    return null;
   }
 }
 
 extension XFileUtils on XFile{
   Future<MultipartFile> toMultipartFile()async{
-    var fileName = this.path.split('/').last;
-    var dataMedia = await this.readAsBytes();
+    var fileName = path.split('/').last;
+    var dataMedia = await readAsBytes();
     var media = MultipartFile.fromBytes('media', dataMedia, filename: fileName);
     return Future.value(media);
   }
@@ -44,7 +44,7 @@ extension XFileUtils on XFile{
 extension XFileListUtils on List<XFile>{
   Future<List<MultipartFile>> toListMultipartFile()async{
     List<MultipartFile> list = [];
-    await Future.wait(this.mapAsList((e) => e.toMultipartFile().then((value) => list.add(value))));
+    await Future.wait(mapAsList((e) => e.toMultipartFile().then((value) => list.add(value))));
     logger.i('list result length ${list.length}');
     return list;
   }

@@ -4,7 +4,7 @@ import 'package:dating_demo/app/widgets/image/blend_bottom.dart';
 class UserCard extends StatefulWidget {
   final UserEntity userEntity;
 
-  UserCard({Key? key, required this.userEntity}) : super(key: key);
+  const UserCard({Key? key, required this.userEntity}) : super(key: key);
 
   @override
   State<UserCard> createState() => _UserCardState();

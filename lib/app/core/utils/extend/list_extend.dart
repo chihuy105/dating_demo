@@ -1,10 +1,13 @@
+// ignore_for_file: prefer_is_empty
+
 import 'package:dating_demo/all_file/all_file.dart';
 
 extension MapExtend<K, V> on RxMap<K, V>? {
 
   RxMap<K, V>? update(Map<K, V>? list) {
-    if(list.isNullOrEmpty() || this == null)
+    if(list.isNullOrEmpty() || this == null) {
       return this;
+    }
 
     this!.clear();
     this!.addAll(list!);
@@ -16,8 +19,9 @@ extension MapExtend<K, V> on RxMap<K, V>? {
 extension RxListExtend<T> on RxList<T>? {
 
   RxList<T>? update(List<T>? list) {
-    if(this == null)
+    if(this == null) {
       return this;
+    }
     this!.clear();
     this!.addAll(list!);
     // this!.refresh();
@@ -44,6 +48,7 @@ extension MapBasics<K, V> on Map<K, V>? {
 }
 
 extension IterableBasics<E> on Iterable<E>? {
+  // ignore: use_function_type_syntax_for_parameters
   List<T> mapAsList<T>(T f(E e)) => this?.map(f).toList() ?? [];
 
   bool isNullOrEmpty() {
@@ -56,15 +61,15 @@ extension IterableBasics<E> on Iterable<E>? {
   }
 
   E? find(bool Function(E element) conditionMethod) {
-    return this.filterAsList(conditionMethod).getOrNull(0);
+    return filterAsList(conditionMethod).getOrNull(0);
   }
 
   List<E> filterAsList(bool Function(E element) conditionMethod) {
-    return this.filter(conditionMethod).toList();
+    return filter(conditionMethod).toList();
   }
 
   List<E> searchList(String? searchText, String? Function(E element) mapping) {
-    return this.filterAsList((element) {
+    return filterAsList((element) {
       return (mapping(element)?.unsignedLower()?.contains(searchText?.unsignedLower()??'')??false);
     });
   }
@@ -92,7 +97,7 @@ extension IterableBasics<E> on Iterable<E>? {
 
   Iterable<T>? mapIndexed<T>(T Function(E e, int i) f) {
     var i = 0;
-    if (this.isNullOrEmpty()) {
+    if (isNullOrEmpty()) {
       return null;
     }
     return this!.map((e) => f(e, i++));

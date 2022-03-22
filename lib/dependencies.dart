@@ -33,8 +33,7 @@ Future<void> _appService() async {
 
   FirebasePushNotification.instance.init();
 
-  Get.put<AppAutoRoute>(AppAutoRoute());
-
+  Get.put<AppAutoRoute>(AppAutoRoute(), permanent: true);
 }
 
 

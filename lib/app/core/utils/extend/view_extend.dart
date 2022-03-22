@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'dart:math' as math;
@@ -42,17 +44,18 @@ extension NullExtend on dynamic {
   }
 }
 
+// ignore: unnecessary_this
 extension ThemeExtend on ThemeData {
   Color onPrimary() {
-    return this.primaryTextTheme.bodyText2!.color!;
+    return primaryTextTheme.bodyText2!.color!;
   }
 
   Color onAccent() {
-    return this.primaryTextTheme.bodyText2!.color!;
+    return primaryTextTheme.bodyText2!.color!;
   }
 
   Color lightGrey() {
-    return this.hintColor.withOpacity(0.6);
+    return hintColor.withOpacity(0.6);
   }
 
   Color darkText() {
@@ -62,10 +65,10 @@ extension ThemeExtend on ThemeData {
 
 extension ListWidgetExtend<T extends Widget> on List<T> {
   List<Widget> withDivider(Widget divider) {
-    if (this.isNullOrEmpty()) return [];
+    if (isNullOrEmpty()) return [];
 
     List<Widget> rs = [];
-    this.forEach((element) {
+    forEach((element) {
       rs.add(element);
       rs.add(divider);
     });
@@ -77,42 +80,37 @@ extension ListWidgetExtend<T extends Widget> on List<T> {
 extension VxTextBuilderExtend on VxTextBuilder {
 
   VxTextBuilder colorPrimary(BuildContext context) {
-    this.velocityColor = Theme.of(context).primaryColor;
+    velocityColor = Theme.of(context).primaryColor;
     return this;
   }
 
   VxTextBuilder colorError(BuildContext context) {
-    this.velocityColor = Theme.of(context).errorColor;
+    velocityColor = Theme.of(context).errorColor;
     return this;
   }
 
   VxTextBuilder colorTransparent(BuildContext context) {
-    this.velocityColor = Colors.transparent;
+    velocityColor = Colors.transparent;
     return this;
   }
 
   VxTextBuilder colorOnPrimary(BuildContext context) {
-    this.velocityColor = Theme.of(context).onPrimary();
+    velocityColor = Theme.of(context).onPrimary();
     return this;
   }
 
   VxTextBuilder colorOnAccent(BuildContext context) {
-    this.velocityColor = Theme.of(context).onAccent();
+    velocityColor = Theme.of(context).onAccent();
     return this;
   }
 
   VxTextBuilder colorLink(BuildContext context) {
-    this.velocityColor = AppColor.getLinkColor();
-    return this;
-  }
-
-  VxTextBuilder colorAccent(BuildContext context) {
-    this.velocityColor = Theme.of(context).accentColor;
+    velocityColor = AppColor.getLinkColor();
     return this;
   }
 
   VxTextBuilder colorHint(BuildContext context) {
-    this.velocityColor = Theme.of(context).hintColor.withOpacity(0.8);
+    velocityColor = Theme.of(context).hintColor.withOpacity(0.8);
     return this;
   }
 

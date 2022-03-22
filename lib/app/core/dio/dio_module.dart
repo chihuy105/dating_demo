@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -19,7 +18,7 @@ class DioModule extends DisposableInterface {
       return _dio!;
     }
 
-    print('**** Dio create');
+    logger.i('**** Dio create');
     BaseOptions options = BaseOptions(
       baseUrl: AppConfig.SERVER_URL,
       connectTimeout: 11000,
@@ -78,19 +77,19 @@ class DioModule extends DisposableInterface {
 
   void addToken(String? token) {
     if (token == null) return;
-    print('DioModule.addToken =>');
+    logger.i('DioModule.addToken =>');
 
     dio.options.headers["authorization"] = 'Bearer ' + token;
   }
 
   void removeToken() {
-    print('DioModule.removeToken =>');
+    logger.i('DioModule.removeToken =>');
     dio.options.headers["authorization"] = null;
   }
 
   @override
   void onClose() {
-    print('**** Dio clear');
+    logger.i('**** Dio clear');
     //dio.clear();
   }
 }

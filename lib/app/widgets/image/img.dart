@@ -4,7 +4,7 @@ class Img extends StatelessWidget {
   final String? src;
   final BoxFit fit;
 
-  Img(this.src, {this.fit = BoxFit.fitWidth});
+   const Img(this.src, {Key? key, this.fit = BoxFit.fitWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class Img extends StatelessWidget {
           : src!;
 
       if (src!.endsWith('.svg')) {
-        return SvgPicture.network(src!, fit: this.fit);
+        return SvgPicture.network(src!, fit: fit);
       }
 
       return CachedNetworkImage(
         imageUrl: url,
-        fit: this.fit,
+        fit: fit,
         // progressIndicatorBuilder: (context, url, downloadProgress) =>
         //     CircularProgressIndicator(
         //   color: AppColor.primary,
@@ -44,12 +44,12 @@ class Img extends StatelessWidget {
 
     if (src!.contains('assets/')) {
       if (src!.contains('.svg')) {
-        return SvgPicture.asset(src!, fit: this.fit);
+        return SvgPicture.asset(src!, fit: fit);
       }
 
       return Image.asset(
         src!,
-        fit: this.fit,
+        fit: fit,
       );
     }
 

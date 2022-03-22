@@ -45,7 +45,6 @@ void main() {
 
 @GenerateMocks([UserRepo])
 void mainCubit() {
-
   late UserListCubit cubit;
   late UserRepo userService;
 
@@ -54,15 +53,21 @@ void mainCubit() {
     cubit = UserListCubit(userService: userService);
   });
 
+  tearDown(() {});
+
   group('UserListCubit manual case', () {
+    setUp(() async {
+      mockito
+          .when(userService.fetchUserList(page: 1))
+          .thenAnswer((_) => Future.value(mockUserList));
+      mockito
+          .when(userService.fetchUserList(page: 2))
+          .thenAnswer((_) => Future.value(mockUserList));
+    });
+
     blocTest<UserListCubit, UserListState>(
       'emits [UserListLoadedState] when loadData return list user',
-      build: () {
-        mockito
-            .when(userService.fetchUserList(page: 1))
-            .thenAnswer((_) => Future.value(mockUserList));
-        return cubit;
-      },
+      build: () => cubit,
       act: (cubit) => cubit.loadData(),
       expect: () => [
         isA<UserListLoading>(),
@@ -72,16 +77,8 @@ void mainCubit() {
     );
 
     blocTest<UserListCubit, UserListState>(
-      'emits [UserListLoadedState] when loadData twice return list user double',
-      build: () {
-        mockito
-            .when(userService.fetchUserList(page: 1))
-            .thenAnswer((_) => Future.value(mockUserList));
-        mockito
-            .when(userService.fetchUserList(page: 2))
-            .thenAnswer((_) => Future.value(mockUserList));
-        return cubit;
-      },
+      'emits [UserListLoadedState] when loadData twice return list user double the length',
+      build: () => cubit,
       act: (cubit) async {
         await cubit.loadData();
         await cubit.loadData();
@@ -89,11 +86,11 @@ void mainCubit() {
       expect: () {
         return [
           isA<UserListLoading>(),
-          isA<UserListLoaded>().having(
-                  (state) => state.data.list.isNullOrEmpty(), 'List not null', false),
+          isA<UserListLoaded>().having((state) => state.data.list.length,
+              'List length equal mockList length', mockUserList.length),
           isA<UserListLoading>(),
-          isA<UserListLoaded>().having(
-                  (state) => state.data.list.isNullOrEmpty(), 'List not null', false)
+          isA<UserListLoaded>().having((state) => state.data.list.length,
+              'List length equal mockList length', mockUserList.length * 2)
         ];
       },
     );
@@ -125,10 +122,7 @@ void mainCubit() {
         return cubit;
       },
       act: (cubit) => cubit.loadData(),
-      expect: () => [
-        isA<UserListLoading>(),
-        isA<UserListError>()
-      ],
+      expect: () => [isA<UserListLoading>(), isA<UserListError>()],
     );
   });
 }

@@ -14,8 +14,9 @@ class TextHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (child == null)
+    if (child == null) {
       return Gaps.empty;
+    }
     return Hero(
       flightShuttleBuilder: _flightShuttleBuilder,
       tag: tag.isEmptyOrValue(UniqueKey()),

@@ -132,11 +132,11 @@ class AppColor {
   static Color get textHint => Get.isDarkMode ? dark_text_hint : text_hint;
 
   static List<Color> get colorList => [
-        Color(0xFFA6D3FC),
-        Color(0xFFCAB3E9),
-        Color(0xFF60C9C5),
-        Color(0xFFF7C262),
-        Color(0xFFFAAD91)
+        const Color(0xFFA6D3FC),
+        const Color(0xFFCAB3E9),
+        const Color(0xFF60C9C5),
+        const Color(0xFFF7C262),
+        const Color(0xFFFAAD91)
       ];
 
   static Color getAccentColor() {
@@ -170,7 +170,7 @@ class AppColor {
   }
 
   static Color getWarningColor() {
-    return Get.isDarkMode ? Color(0xFFF7C262) : Colors.orange;
+    return Get.isDarkMode ? const Color(0xFFF7C262) : Colors.orange;
   }
 
   static Color getErrorColor() {
@@ -197,17 +197,17 @@ class AppColor {
 
   static MaterialColor get materialWhite => const MaterialColor(
         0xFFFFFFFF,
-        const <int, Color>{
-          50: const Color(0xFFFFFFFF),
-          100: const Color(0xFFFFFFFF),
-          200: const Color(0xFFFFFFFF),
-          300: const Color(0xFFFFFFFF),
-          400: const Color(0xFFFFFFFF),
-          500: const Color(0xFFFFFFFF),
-          600: const Color(0xFFFFFFFF),
-          700: const Color(0xFFFFFFFF),
-          800: const Color(0xFFFFFFFF),
-          900: const Color(0xFFFFFFFF),
+        <int, Color>{
+          50: Color(0xFFFFFFFF),
+          100: Color(0xFFFFFFFF),
+          200: Color(0xFFFFFFFF),
+          300: Color(0xFFFFFFFF),
+          400: Color(0xFFFFFFFF),
+          500: Color(0xFFFFFFFF),
+          600: Color(0xFFFFFFFF),
+          700: Color(0xFFFFFFFF),
+          800: Color(0xFFFFFFFF),
+          900: Color(0xFFFFFFFF),
         },
       );
 

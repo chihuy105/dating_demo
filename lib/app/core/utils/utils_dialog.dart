@@ -10,7 +10,7 @@ void showCustomBottomSheet(BuildContext context,
     {required String label, List<BottomSheetOption>? options, Widget? child}) {
   assert(options != null || child != null);
   List<Widget?> _list = [
-    Container(
+    SizedBox(
       width: ScreenUtils.getPercentWidth(percent: 1),
       child: ListTile(
         title: Center(
@@ -18,7 +18,7 @@ void showCustomBottomSheet(BuildContext context,
         ),
       ),
     ),
-    Divider(height: 0),
+    const Divider(height: 0),
   ];
   if (options != null) {
     Widget _buildOption(String label, dynamic callBack) {
@@ -37,28 +37,28 @@ void showCustomBottomSheet(BuildContext context,
                   fontSize: Theme.of(context).textTheme.bodyText2!.fontSize),
             ),
           ),
-          Divider(height: 0),
+          const Divider(height: 0),
         ],
       );
     }
 
-    options.forEach((BottomSheetOption option) {
+    for (var option in options) {
       _list.add(
         _buildOption(option.label, option.callback),
       );
-    });
+    }
   } else {
     _list.add(child);
   }
   showModalBottomSheet(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
       backgroundColor: Colors.white,
       context: Get.context!,
       isScrollControlled: true,
       builder: (context) {
         return Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -68,7 +68,7 @@ void showCustomBottomSheet(BuildContext context,
 }
 
 void openAddEntryDialog(Widget scaffold) {
-  Navigator.of(Get.context!).push(new MaterialPageRoute<Null>(
+  Navigator.of(Get.context!).push(MaterialPageRoute<void>(
       builder: (BuildContext context) {
         return scaffold;
       },
@@ -93,7 +93,7 @@ void fDialogShowIOS(BuildContext context, {required String title, String? conten
         ),
         CupertinoDialogAction(
           isDefaultAction: true,
-          child: Text('yes'.tr,style: TextStyle(
+          child: Text('yes'.tr,style: const TextStyle(
             color: AppColor.text
           ),),
           onPressed: (){
@@ -115,7 +115,7 @@ void fDialogConfirmIOS(BuildContext context, {required String title, String? con
       actions: <Widget>[
         CupertinoDialogAction(
           isDefaultAction: true,
-          child: Text('LBL_CONFIRM'.tr,style: TextStyle(
+          child: Text('LBL_CONFIRM'.tr,style: const TextStyle(
               color: AppColor.text
           ),),
           onPressed: (){
@@ -139,12 +139,12 @@ Future<void> showAlertDialog(BuildContext context, {required String title, Strin
           children: <Widget>[
             OutlinedButton(
               style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4)),
                     side: BorderSide(color: Colors.red, width: 1.0), // HERE
                   ),
                   side:
-                  BorderSide(color: Colors.red, width: 1.0)), // AND HERE
+                  const BorderSide(color: Colors.red, width: 1.0)), // AND HERE
               onPressed: () {
                 Get.back(result: true);
               },

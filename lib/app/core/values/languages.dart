@@ -1,5 +1,4 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:get/get.dart';
 
 class Languages extends Translations {
   _buildLangVn() {
@@ -589,7 +588,6 @@ class Languages extends Translations {
       'LBL_SIGN_OUT': 'Đăng xuất',
       'LBL_SECURITY': 'Bảo mật',
       'LBL_FINGER': 'Sử dụng vân tay để mở khóa',
-      'LBL_CHANGE_PASSWORD': 'Đổi mật khẩu',
       'LBL_MISC': 'Nhiều hơn',
       'LBL_TERMS': 'Điều khoản dịch vụ',
       'LBL_LICENSES': 'Giấy phép',
@@ -610,7 +608,6 @@ class Languages extends Translations {
       'LBL_INFOR_LESSON': 'Thông tin lịch học',
       'LBL_NO_DATA_LESSON': 'Không có lịch học!',
       'LBL_ALBUM_DESCRIPTION': 'Bạn nghĩ gì về album này?',
-      'LBL_CONFIRM_NAVIGATION': 'Hủy bỏ thay đổi',
       'LBL_NO_NAVIGATION': 'Tiếp tục sửa',
       'LBL_CONFIRM_NAVIGATION_CONTENT_CREATE':
           'Bạn có chắc chắn muốn hủy bỏ dữ liệu mới này không?',
@@ -1225,7 +1222,6 @@ class Languages extends Translations {
       'LBL_ATTENDANCE_LOYALTY_POINT': 'Loyalty point',
       'LBL_ATTENDANCE_DAILY_SCORE': 'Daily score',
       'LBL_ATTENDANCE_CARE_COMMENT': 'Care\'s comments',
-      'LBL_CONFIRM_NAVIGATION': 'Confirm navigation',
       'LBL_CONFIRM_NOTIFICATION': 'Confirm send',
       'LBL_CONFIRM_NOTIFICATION_CONTENT':
           'Are you sure you want to send notification?',
@@ -1253,8 +1249,6 @@ class Languages extends Translations {
       'A': '✗ Absent',
       'E': '⛒ Excused',
       'none': 'None',
-      'Unpaid': 'Unpaid',
-      'Paid': 'Paid',
       'Cash': 'Cash',
       'Card': 'Card',
       'Bank Transfer': 'Bank Transfer',
@@ -1335,8 +1329,6 @@ class Languages extends Translations {
           'You click here to return the <strong> home screen </strong>.',
       'LBL_ACCUMULATION': 'Accumulation History',
 
-      'LBL_MENU_HOME_INTRO':
-          'You click here to return the <strong> home screen </strong>.',
       'LBL_MENU_FEEDBACK_INTRO':
           'If you want to know about <strong> tuition, timetable ,sick leave </strong> or <strong> questions </strong> click here.',
       'LBL_DOCUMENT_INTRO':

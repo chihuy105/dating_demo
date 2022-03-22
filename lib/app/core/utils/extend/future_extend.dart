@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:retry/retry.dart';
 
 import 'package:dating_demo/all_file/all_file.dart';
@@ -18,11 +17,12 @@ extension FutureExtendRequestApi<T> on Future<T?> {
     Duration delayFactor = const Duration(milliseconds: 200),
     Duration maxDelay = const Duration(seconds: 30),
   }) async {
-    var a;
+    // ignore: prefer_typing_uninitialized_variables
+    var  a;
     await retry(
         () async {
           // print('retry: ok loop');
-          await this.then((value) {
+          await then((value) {
             // print('retry value: $value');
             a = Future.value(value as T);
           });
@@ -34,7 +34,7 @@ extension FutureExtendRequestApi<T> on Future<T?> {
         retryIf: (e) {
           // print('retry: ok retryIf');
           if (e is DioError) {
-            print('retry: start');
+            logger.i('retry: start');
             return _isCanRetry(e);
           }
           return false;

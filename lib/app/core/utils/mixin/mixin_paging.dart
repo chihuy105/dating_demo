@@ -58,7 +58,7 @@ mixin MixinPaging<T> {
             })
         .catchError((Object obj) {
       setPagingState(PagingState.Ide);
-      logger.e('${runtimeType} ==> catchError');
+      logger.e('$runtimeType ==> catchError');
       switch (obj.runtimeType) {
         case DioError:
           // Here's the sample to get the failed response error code and message
@@ -81,7 +81,7 @@ mixin MixinPaging<T> {
     loadData(true);
   }
 
-  void onNewList(List<T> dataList) {
+  void onNewList(List<T>? dataList) {
     if (dataList != null) {
       /// 30 data in one page, equal to 30 items, there is next page
       /// The specific processing logic is processed according to the specific interface situation, this part can be extracted

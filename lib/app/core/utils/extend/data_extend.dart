@@ -1,6 +1,7 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:dating_demo/all_file/all_file.dart';
 import 'package:intl/intl.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 final oCcy = NumberFormat.currency(locale: "vi_VN", symbol: "₫");
 
@@ -97,7 +98,7 @@ extension DataExtendString on String? {
     }
 
     String pattern = r'(^(09|03|07|08|05)+[0-9]{8}$)';
-    RegExp regExp = new RegExp(pattern);
+    RegExp regExp = RegExp(pattern);
 
     if (!regExp.hasMatch(this!)) {
       return false;
@@ -110,11 +111,12 @@ extension DataExtendString on String? {
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?)*$";
-    RegExp regex = new RegExp(pattern.toString());
-    if (!regex.hasMatch(this!) || this.isNullOrEmpty())
+    RegExp regex = RegExp(pattern.toString());
+    if (!regex.hasMatch(this!) || this.isNullOrEmpty()) {
       return 'entervalidemail'.tr;
-    else
+    } else {
       return null;
+    }
   }
 
   String getDate() {

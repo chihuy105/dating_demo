@@ -54,7 +54,7 @@ export 'package:package_info_plus/package_info_plus.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:flutter_svg/flutter_svg.dart';
-export 'package:flutter_html/flutter_html.dart' hide NavigationDecision, NavigationDelegate,NavigationRequest, OnTap;
+export 'package:flutter_html/flutter_html.dart' hide OnTap;
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:keyboard_dismisser/keyboard_dismisser.dart';
 export 'package:url_launcher/url_launcher.dart';
