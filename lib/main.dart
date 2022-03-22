@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               );
               return child;
             },
-            themeMode: ThemeMode.light,
+            themeMode: ThemeMode.dark,
             darkTheme: AppTheme.getTheme(isDark: true),
             theme: AppTheme.getTheme(isDark: false),
             debugShowCheckedModeBanner: false,

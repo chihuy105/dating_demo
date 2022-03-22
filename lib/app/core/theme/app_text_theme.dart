@@ -14,7 +14,9 @@ class AppTextTheme {
   );
 
   static TextTheme getTextTheme({bool isDarkMode = false}) {
-    var textDynamic = AppTextTheme.text;
+    var textDynamic = text.copyWith(
+      color: isDarkMode ? AppColor.text.dark : AppColor.text.light
+    );
     return TextTheme(
       bodyText2: textDynamic.copyWith(fontSize: 14),
       bodyText1: textDynamic.copyWith(fontSize: 14),

@@ -139,7 +139,9 @@ class AppColor {
 
   //// *** TEXT Color *** ////
 
-  static const AppColorData text = AppColorData(light: Color(0xFF171717), dark: Color(0xFFFAFBFC));
+  static const AppColorData text = AppColorData(
+      light: Color(0xFF171717),
+      dark: Color(0xFFFAFBFC));
 
   static const AppColorData textGray = AppColorData(light: Color(0xFFcccccc), dark: Color(0xFF666666));
 

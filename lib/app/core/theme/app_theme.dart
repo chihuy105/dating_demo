@@ -3,14 +3,11 @@ import 'package:dating_demo/all_file/all_file.dart';
 class AppTheme {
   static ThemeData getTheme({bool isDark = false}) {
     var colorScheme = AppColor.colorSchemaFrom(isDark: isDark);
-    // For surfaces that use primary color in light themes and surface color in dark
-    final Color primarySurfaceColor = isDark ? colorScheme.surface : colorScheme.primary;
     final Color onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     return ThemeData(
-      colorScheme: colorScheme,
       brightness: colorScheme.brightness,
-      primaryColor: primarySurfaceColor,
+      primaryColor: colorScheme.primary,
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       bottomAppBarColor: colorScheme.surface,
