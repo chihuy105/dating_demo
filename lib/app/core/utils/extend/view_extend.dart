@@ -105,7 +105,7 @@ extension VxTextBuilderExtend on VxTextBuilder {
   }
 
   VxTextBuilder colorLink(BuildContext context) {
-    velocityColor = AppColor.getLinkColor();
+    velocityColor = AppColor.tertiary.dynamic;
     return this;
   }
 

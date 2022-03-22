@@ -10,7 +10,7 @@ class AppLoading {
     var loading = isLoading
         ? CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(
-                color ?? AppColor.getAccentColor()),
+                color ?? AppColor.secondary.dynamic),
             strokeWidth: strokeWidth ?? 2,
           )
         : Gaps.empty;

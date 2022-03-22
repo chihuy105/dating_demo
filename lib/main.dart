@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
               return child;
             },
             themeMode: ThemeMode.light,
-            darkTheme: AppTheme.getTheme(isDarkMode: true),
-            theme: AppTheme.getTheme(isDarkMode: false),
+            darkTheme: AppTheme.getTheme(isDark: true),
+            theme: AppTheme.getTheme(isDark: false),
             debugShowCheckedModeBanner: false,
             routerDelegate: appRouter.delegate(),
             routeInformationParser: appRouter.defaultRouteParser(),

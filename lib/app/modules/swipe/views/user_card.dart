@@ -27,7 +27,7 @@ class _UserCardState extends State<UserCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColor.onPrimary,
+      color: AppColor.primary.dynamic,
       child: Stack(
         fit: StackFit.expand,
         children: [

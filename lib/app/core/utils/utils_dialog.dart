@@ -85,7 +85,7 @@ void fDialogShowIOS(BuildContext context, {required String title, String? conten
       actions: <Widget>[
         CupertinoDialogAction(
           child: Text('no'.tr,style: TextStyle(
-            color: AppColor.getErrorColor()
+            color: AppColor.error.dynamic
           ),),
           onPressed: (){
             negative();
@@ -93,9 +93,7 @@ void fDialogShowIOS(BuildContext context, {required String title, String? conten
         ),
         CupertinoDialogAction(
           isDefaultAction: true,
-          child: Text('yes'.tr,style: const TextStyle(
-            color: AppColor.text
-          ),),
+          child: Text('yes'.tr,style: AppTextTheme.text,),
           onPressed: (){
             positive();
           },
@@ -115,9 +113,7 @@ void fDialogConfirmIOS(BuildContext context, {required String title, String? con
       actions: <Widget>[
         CupertinoDialogAction(
           isDefaultAction: true,
-          child: Text('LBL_CONFIRM'.tr,style: const TextStyle(
-              color: AppColor.text
-          ),),
+          child: Text('LBL_CONFIRM'.tr,style: AppTextTheme.text,),
           onPressed: (){
             positive();
           },
@@ -157,7 +153,7 @@ Future<void> showAlertDialog(BuildContext context, {required String title, Strin
               },
               child: 'OK'.text.white.make().px(15),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColor.app_main),
+                backgroundColor: MaterialStateProperty.all(AppColor.primary.dynamic),
               ),
             ).pOnly(right: 16).expand(flex: 1),
           ],

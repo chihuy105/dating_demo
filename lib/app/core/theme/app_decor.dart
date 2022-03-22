@@ -77,7 +77,7 @@ class AppDecor {
   ) {
     return BoxDecoration(
         // border: Border.all(color: Colors.orange, width: 1),
-        color: AppColor.primary);
+        color: AppColor.primary.dynamic);
   }
 
   static BoxDecoration borderTopCorner(
@@ -85,13 +85,6 @@ class AppDecor {
   ) {
     return BoxDecoration(
         border: Border.all(color: Colors.grey.shade300,width: 1),
-        color: AppColor.secondary);
-  }
-
-  static BoxDecoration outlinePrice(BuildContext context) {
-    return BoxDecoration(
-        color: AppColor.getPriceColor(),
-        border: Border.all(color: AppColor.getPriceBorderColor()),
-        borderRadius: const BorderRadius.all(Radius.circular(Dimens.rad_XXS)));
+        color: AppColor.secondary.dynamic);
   }
 }

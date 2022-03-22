@@ -83,10 +83,10 @@ class AppButton {
   static ButtonStyle textStyleLink(BuildContext context) {
     return ButtonStyle(
       foregroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) => AppColor.getLinkColor(),
+            (Set<MaterialState> states) => AppColor.tertiary.dynamic,
       ),
       overlayColor: MaterialStateColor.resolveWith(
-              (states) => AppColor.getLinkColor().withOpacity(0.1)),
+              (states) => AppColor.tertiary.dynamic.withOpacity(0.1)),
     );
   }
 

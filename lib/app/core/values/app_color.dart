@@ -1,189 +1,162 @@
 import 'package:dating_demo/all_file/all_file.dart';
 
+///
+/// Color generator: https://material-foundation.github.io/material-theme-builder/#/custom
+///
 class AppColor {
   AppColor._();
 
-  static const Color app_main = Color(0xFF0C967C);
-  static const Color dark_app_main = Color(0xffFBFBFD);
+  static ColorScheme get schema => Get.isDarkMode ? _colorSchemeDark : _colorScheme;
 
-  static const Color accent = Color(0xfff8a954);
-  static const Color dark_accent = Color(0xffd58d48);
+  static ColorScheme colorSchemaFrom({required bool isDark}){
+    return isDark ? _colorSchemeDark : _colorScheme;
+  }
 
-  static const MaterialColor app_main_swatch = Colors.green;
-  static MaterialColor dark_app_main_swatch = materialWhite;
+  //// *** Primary *** ////
 
-  static const Color shadow = Colors.black;
-  static const Color dark_shadow = Color(0xFF121212);
+  static const AppColorData primary = AppColorData(
+      light: Color(0xFF006783),
+      dark: Color(0xff54d5ff)
+  );
 
-  static const Color surface = Color(0xffffffff);
-  static const Color dark_surface = Color(0xFF363640);
+  static const AppColorData onPrimary = AppColorData(
+      light: Color(0xFFffffff),
+      dark: Color(0xff003545)
+  );
 
-  static const Color scaffold_bg_color = Color(0xffF6F6F8);
-  static const Color dark_scaffold_bg_color = Color(0xFF27272F);
+  static const AppColorData primaryContainer = AppColorData(
+      light: Color(0xFFb7eaff),
+      dark: Color(0xff004d62)
+  );
 
-  static const Color material_bg = Color(0xFFFFFFFF);
-  static const Color dark_material_bg = Color(0xFF27272F);
+  static const AppColorData onPrimaryContainer = AppColorData(
+      light: Color(0xFF001f2a),
+      dark: Color(0xffb7eaff)
+  );
 
-  static const Color bg_gray = Color(0xFFF6F6F6);
-  static const Color dark_bg_gray = Color(0xFF1F1F1F);
+  //// *** Secondary *** ////
 
-  static const Color line = Color(0xFFE3E3E3);
-  static const Color dark_line = Color(0xFF3A3C3D);
+  static const AppColorData secondary = AppColorData(
+      light: Color(0xFF4c616b),
+      dark: Color(0xffb3cad5)
+  );
 
-  static const Color red = Color(0xFFFF4759);
-  static const Color dark_red = Color(0xFFE03E4E);
+  static const AppColorData onSecondary = AppColorData(
+      light: Color(0xFFffffff),
+      dark: Color(0xff1e333c)
+  );
 
-  static const Color link = Color(0xFF00A5C7);
-  static const Color dark_link = Color(0xFF00C6E8);
+  static const AppColorData secondaryContainer = AppColorData(
+      light: Color(0xFFcfe6f1),
+      dark: Color(0xff354a53)
+  );
 
-  static const Color button_disabled = Color(0xFF96BBFA);
-  static const Color dark_button_disabled = Color(0xFF83A5E0);
+  static const AppColorData onSecondaryContainer = AppColorData(
+      light: Color(0xFF071e26),
+      dark: Color(0xffcfe6f1)
+  );
 
-  static const Color unselected_item_color = Color(0xffececec);
-  static const Color dark_unselected_item_color = Color(0xFF4D4D4D);
+  //// *** Tertiary *** ////
 
-  static const Color hint_color = Color(0xff777b7c);
-  static const Color dark_hint_color = Color(0xFF4D4D4D);
+  static const AppColorData tertiary = AppColorData(
+      light: Color(0xFF5b5b7e),
+      dark: Color(0xffc4c3ea)
+  );
 
-  static const Color divider_color = Color(0xe6dedede);
-  static const Color dark_divider_color = Color(0xE6000000);
+  static const AppColorData onTertiary = AppColorData(
+      light: Color(0xFFffffff),
+      dark: Color(0xff2d2d4d)
+  );
 
-  static const Color icon = Colors.white;
-  static const Color dark_icon = Color(0xFF4D4D4D);
+  static const AppColorData tertiaryContainer = AppColorData(
+      light: Color(0xFFe1dfff),
+      dark: Color(0xff444465)
+  );
 
-  static const Color bg_gray_ = Color(0xFFE6E6E6);
-  static const Color dark_bg_gray_ = Color(0xFF242526);
+  static const AppColorData onTertiaryContainer = AppColorData(
+      light: Color(0xFF181837),
+      dark: Color(0xffe1dfff)
+  );
 
-  static const Color bg_gray_price_border = Color(0xFFBBBBBB);
-  static const Color dark_bg_gray_price_border = Color(0xFFBBBBBB);
+  //// *** Error *** ////
 
-  static const Color bg_gray_price = Color(0xFFFAFAFA);
-  static const Color dark_bg_gray_price = Color(0xFFFAFAFA);
+  static const AppColorData error = AppColorData(
+      light: Color(0xFFba1b1b),
+      dark: Color(0xffffb4a9)
+  );
 
-  static const Color base_price = Color(0xFFCA1C26);
-  static const Color dark_base_price = Color(0xFFCA1C26);
+  static const AppColorData onError = AppColorData(
+      light: Color(0xFFffffff),
+      dark: Color(0xff680003)
+  );
 
-  static const Color base_discount = Color(0xFF919191);
-  static const Color dark_base_discount = Color(0xFF919191);
+  static const AppColorData errorContainer = AppColorData(
+      light: Color(0xFFffdad4),
+      dark: Color(0xff930006)
+  );
 
-  static const Color h2 = Color(0xFF16796F);
-  static const Color dark_h2 = Color(0xFF16796F);
+  static const AppColorData onErrorContainer = AppColorData(
+      light: Color(0xFF410001),
+      dark: Color(0xffffdad4)
+  );
 
-  static const Color light_tag = Color(0xFFFBFAF9);
-  static const Color dark_tag = Color(0xFFFBFAF9);
+  //// *** Background *** ////
 
-  static const Color light_border_tag = Color(0xFFEFEFEF);
-  static const Color dark_border_tag = Color(0xFFEFEFEF);
+  static const AppColorData background = AppColorData(
+      light: Color(0xFFfbfcfe),
+      dark: Color(0xff191c1e)
+  );
+
+  static const AppColorData onBackground = AppColorData(
+      light: Color(0xFF191c1e),
+      dark: Color(0xffe1e3e5)
+  );
+
+  static const AppColorData surface = AppColorData(
+      light: Color(0xFFfbfcfe),
+      dark: Color(0xff191c1e)
+  );
+
+  static const AppColorData onSurface = AppColorData(
+      light: Color(0xFF191c1e),
+      dark: Color(0xffe1e3e5)
+  );
+
+  static const AppColorData outline = AppColorData(
+      light: Color(0xFF70787d),
+      dark: Color(0xff8a9296)
+  );
+
+  static const AppColorData surfaceVariant = AppColorData(
+      light: Color(0xFFdce4e8),
+      dark: Color(0xff40484c)
+  );
+
+  static const AppColorData onSurfaceVariant = AppColorData(
+      light: Color(0xFF40484c),
+      dark: Color(0xffc0c8cc)
+  );
 
   //// *** TEXT Color *** ////
 
-  static const Color text = Color(0xFF171717);
-  static const Color dark_text = Color(0xFFFAFBFC);
+  static const AppColorData text = AppColorData(light: Color(0xFF171717), dark: Color(0xFFFAFBFC));
 
-  static const Color text_gray = Color(0xFFcccccc);
-  static const Color dark_text_gray = Color(0xFF666666);
+  static const AppColorData textGray = AppColorData(light: Color(0xFFcccccc), dark: Color(0xFF666666));
 
-  static const Color text_hint = Color(0xE6989898);
-  static const Color dark_text_hint = Color(0xFF989898);
+  static const AppColorData textHint = AppColorData(light: Color(0xE6989898), dark: Color(0xFF989898));
 
-  static const Color text_heading = Color(0xFF392a25);
-  static const Color dark_text_heading = Color(0xFF666666);
+  static const AppColorData textHeading = AppColorData(light: Color(0xFF392a25), dark: Color(0xFF666666));
 
-  static const Color text_disabled = Color(0xFFD4E2FA);
-  static const Color dark_text_disabled = Color(0xFFCEDBF2);
+  static const AppColorData textDisable = AppColorData(light: Color(0xFFD4E2FA), dark: Color(0xFFCEDBF2));
 
   //// *** Current Project Color *** ////
 
-  static const Color light_text_tag = Color(0xFF8E8B87);
-  static const Color dark_text_tag = Color(0xFF8E8B87);
-  static const Color greyBtn = Color(0xFFC4C4C4);
+  static const AppColorData successColor = AppColorData(light: Colors.green, dark: Colors.lightGreen);
 
-  static const Color _toggleLight = Color(0xFFA0A0A0);
-  static const Color _toggleDark = Color(0xFFA0A0A0);
+  static const AppColorData warningColor = AppColorData(light: Colors.orange, dark: Color(0xFFF7C262));
 
   //// ******   Dynamic Colors   ****** ////
 
-  static Color get primary => Get.isDarkMode ? dark_app_main : app_main;
-
-  static Color get secondary => Get.isDarkMode ? dark_line : line;
-
-  static Color get onPrimary => Get.isDarkMode ? dark_surface : surface;
-
-  static Color get h2Color => Get.isDarkMode ? dark_h2 : h2;
-
-  static Color get hint => Get.isDarkMode ? dark_hint_color : hint_color;
-
-  static Color get tag => Get.isDarkMode ? dark_tag : light_tag;
-
-  static Color get border_tag =>
-      Get.isDarkMode ? dark_border_tag : light_border_tag;
-
-  static Color get text_tag => Get.isDarkMode ? dark_text_tag : light_text_tag;
-
-  static Color get divider =>
-      Get.isDarkMode ? dark_divider_color : divider_color;
-
-  static Color get toggle => Get.isDarkMode ? _toggleLight : _toggleDark;
-
-  //// *** Dynamic Text Colors
-
-  static Color get textDark => Get.isDarkMode ? dark_text : text;
-
-  static Color get textHint => Get.isDarkMode ? dark_text_hint : text_hint;
-
-  static List<Color> get colorList => [
-        const Color(0xFFA6D3FC),
-        const Color(0xFFCAB3E9),
-        const Color(0xFF60C9C5),
-        const Color(0xFFF7C262),
-        const Color(0xFFFAAD91)
-      ];
-
-  static Color getAccentColor() {
-    return Get.isDarkMode ? AppColor.dark_accent : AppColor.accent;
-  }
-
-  static Color getBaseDiscount() {
-    return Get.isDarkMode
-        ? AppColor.dark_base_discount
-        : AppColor.base_discount;
-  }
-
-  static Color getBasePriceColor() {
-    return Get.isDarkMode ? AppColor.dark_base_price : AppColor.base_price;
-  }
-
-  static Color getPriceBorderColor() {
-    return Get.isDarkMode
-        ? AppColor.dark_bg_gray_price_border
-        : AppColor.bg_gray_price_border;
-  }
-
-  static Color getPriceColor() {
-    return Get.isDarkMode
-        ? AppColor.dark_bg_gray_price
-        : AppColor.bg_gray_price;
-  }
-
-  static Color getLinkColor() {
-    return Get.isDarkMode ? AppColor.dark_link : AppColor.link;
-  }
-
-  static Color getWarningColor() {
-    return Get.isDarkMode ? const Color(0xFFF7C262) : Colors.orange;
-  }
-
-  static Color getErrorColor() {
-    return Get.isDarkMode ? AppColor.dark_red : AppColor.red;
-  }
-
-  static Color getSuccessColor() {
-    return Get.isDarkMode ? Colors.lightGreen : Colors.green;
-  }
-
-  static Color getIconDark() {
-    return Get.isDarkMode ? AppColor.icon : AppColor.dark_icon;
-  }
 
   static const Color loginGradientStart = Color(0xFFfbab66);
   static const Color loginGradientEnd = Color(0xFFf7418c);
@@ -195,7 +168,8 @@ class AppColor {
     end: Alignment.bottomCenter,
   );
 
-  static MaterialColor get materialWhite => const MaterialColor(
+  static MaterialColor get materialWhite =>
+      const MaterialColor(
         0xFFFFFFFF,
         <int, Color>{
           50: Color(0xFFFFFFFF),
@@ -215,3 +189,74 @@ class AppColor {
     return Colors.grey[600]!.withOpacity(0.3);
   }
 }
+
+class AppColorData {
+  final Color light;
+  final Color dark;
+
+  const AppColorData({required this.light, required this.dark});
+
+  Color get dynamic => Get.isDarkMode ? dark : light;
+}
+
+final ColorScheme _colorScheme = ColorScheme(brightness: Brightness.light,
+  primary: AppColor.primary.light,
+  onPrimary: AppColor.onPrimary.light,
+  primaryContainer: AppColor.primaryContainer.light,
+  onPrimaryContainer: AppColor.onPrimaryContainer.light,
+
+  secondary: AppColor.secondary.light,
+  onSecondary: AppColor.onSecondary.light,
+  secondaryContainer: AppColor.secondaryContainer.light,
+  onSecondaryContainer: AppColor.onSecondaryContainer.light,
+
+  tertiary: AppColor.tertiary.light,
+  onTertiary: AppColor.onTertiary.light,
+  tertiaryContainer: AppColor.tertiaryContainer.light,
+  onTertiaryContainer: AppColor.onTertiaryContainer.light,
+
+  error: AppColor.error.light,
+  onError: AppColor.onError.light,
+  errorContainer: AppColor.errorContainer.light,
+  onErrorContainer: AppColor.onErrorContainer.light,
+
+  background: AppColor.background.light,
+  onBackground: AppColor.onBackground.light,
+  surface: AppColor.surface.light,
+  onSurface: AppColor.onSurface.light,
+  outline: AppColor.outline.light,
+  surfaceVariant: AppColor.surfaceVariant.light,
+  onSurfaceVariant: AppColor.onSurfaceVariant.light,
+);
+
+
+final ColorScheme _colorSchemeDark = ColorScheme(brightness: Brightness.dark,
+  primary: AppColor.primary.dark,
+  onPrimary: AppColor.onPrimary.dark,
+  primaryContainer: AppColor.primaryContainer.dark,
+  onPrimaryContainer: AppColor.onPrimaryContainer.dark,
+
+  secondary: AppColor.secondary.dark,
+  onSecondary: AppColor.onSecondary.dark,
+  secondaryContainer: AppColor.secondaryContainer.dark,
+  onSecondaryContainer: AppColor.onSecondaryContainer.dark,
+
+  tertiary: AppColor.tertiary.dark,
+  onTertiary: AppColor.onTertiary.dark,
+  tertiaryContainer: AppColor.tertiaryContainer.dark,
+  onTertiaryContainer: AppColor.onTertiaryContainer.dark,
+
+  error: AppColor.error.dark,
+  onError: AppColor.onError.dark,
+  errorContainer: AppColor.errorContainer.dark,
+  onErrorContainer: AppColor.onErrorContainer.dark,
+
+  background: AppColor.background.dark,
+  onBackground: AppColor.onBackground.dark,
+  surface: AppColor.surface.dark,
+  onSurface: AppColor.onSurface.dark,
+  outline: AppColor.outline.dark,
+  surfaceVariant: AppColor.surfaceVariant.dark,
+  onSurfaceVariant: AppColor.onSurfaceVariant.dark,
+);
+

@@ -41,7 +41,7 @@ class BtnBack extends StatelessWidget {
       }
     }
 
-    final iconColorUse = iconColor ?? AppColor.getIconDark();
+    final iconColorUse = iconColor ?? context.theme.iconTheme.color;
     final backgroundColorUse = backgroundColor ?? Colors.transparent;
 
     return BtnCircleIcon(

@@ -43,7 +43,7 @@ class ToastUtils {
     _curToast = _showSimpleNotification(
         msg: msg,
         icon: FontAwesomeIcons.solidCheckCircle,
-        color: AppColor.getSuccessColor());
+        color: AppColor.successColor.dynamic);
   }
 
   static error({String? msg, dynamic error}) {
@@ -58,7 +58,7 @@ class ToastUtils {
     _curToast = _showSimpleNotification(
         msg: msg ?? 'errorMsg'.tr,
         icon: FontAwesomeIcons.exclamationCircle,
-        color: AppColor.getErrorColor());
+        color: AppColor.error.dynamic);
   }
 
   static warning({String? msg}) {
@@ -66,7 +66,7 @@ class ToastUtils {
     _curToast = _showSimpleNotification(
         msg: msg ?? 'errorMsg'.tr,
         icon: FontAwesomeIcons.exclamationCircle,
-        color: AppColor.getWarningColor());
+        color: AppColor.successColor.dynamic);
   }
 
   static OverlaySupportEntry _showSimpleNotification(
