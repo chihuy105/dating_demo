@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/services/firebase_push_notify.dart';
+import 'package:dating_demo/services/firebase_notification_service.dart';
 import 'package:dating_demo/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -31,7 +31,7 @@ Future<void> _appService() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  FirebasePushNotification.instance.init();
+  FirebaseNotificationService.instance.init();
 
   Get.put<AppAutoRoute>(AppAutoRoute(), permanent: true);
 }

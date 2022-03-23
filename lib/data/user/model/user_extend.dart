@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/data/user/model/user_resp.dart';
+import 'package:dating_demo/data/user/model/user_resp.dart';
 
 extension UserEntityExtend on UserEntity? {
 

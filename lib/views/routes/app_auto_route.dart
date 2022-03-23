@@ -1,6 +1,6 @@
 
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/modules/swipe/views/swipe_page.dart';
+import 'package:dating_demo/views/screens/swipe/views/swipe_page.dart';
 
 @MaterialAutoRouter(
     replaceInRouteName: 'Page|Dialog|View,Route',

@@ -1,6 +1,6 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/modules/swipe/views/user_card.dart';
-import 'package:dating_demo/app/modules/swipe/bloc/user_list_cubit.dart';
+import 'package:dating_demo/views/screens/swipe/views/user_card.dart';
+import 'package:dating_demo/views/screens/swipe/bloc/user_list_cubit.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
 class SwipePage extends StatefulWidget {

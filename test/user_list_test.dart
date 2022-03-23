@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/modules/swipe/bloc/user_list_cubit.dart';
+import 'package:dating_demo/views/screens/swipe/bloc/user_list_cubit.dart';
 import 'package:test/test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart' as mockito;

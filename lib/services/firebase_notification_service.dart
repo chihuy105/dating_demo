@@ -25,13 +25,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   logger.i("Handling a background message: ${message.notification?.title}");
 }
 
-class FirebasePushNotification {
-  FirebasePushNotification._();
+class FirebaseNotificationService {
+  FirebaseNotificationService._();
 
-  static final FirebasePushNotification _instance =
-      FirebasePushNotification._();
+  static final FirebaseNotificationService _instance =
+      FirebaseNotificationService._();
 
-  static FirebasePushNotification get instance {
+  static FirebaseNotificationService get instance {
     return _instance;
   }
 

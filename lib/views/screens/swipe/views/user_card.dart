@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/widgets/image/blend_bottom.dart';
+import 'package:dating_demo/views/widgets/image/blend_bottom.dart';
 
 class UserCard extends StatefulWidget {
   final UserEntity userEntity;

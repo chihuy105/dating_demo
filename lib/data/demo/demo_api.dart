@@ -2,11 +2,11 @@
 // import 'package:dating_demo/all_file/all_file.dart';
 // import 'package:retrofit/http.dart';
 //
-// part 'demo_service.g.dart';
+// part 'demo_api.g.dart';
 //
 // @RestApi()
-// abstract class DemoService {
-//   factory DemoService(Dio dio) = _DemoService;
+// abstract class DemoApi {
+//   factory DemoApi(Dio dio) = _DemoApi;
 //
 //   @GET("/public/blogs")
 //   Future<DataResp> getBlogsByCategory(

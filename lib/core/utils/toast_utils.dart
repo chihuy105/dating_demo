@@ -1,5 +1,5 @@
 import 'package:dating_demo/all_file/all_file.dart';
-import 'package:dating_demo/app/widgets/toast/ios_toast.dart';
+import 'package:dating_demo/views/widgets/toast/ios_toast.dart';
 
 class ToastUtils {
   static OverlaySupportEntry? _curToast;

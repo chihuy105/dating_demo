@@ -2,6 +2,18 @@ import 'dart:math';
 
 import 'package:dating_demo/all_file/all_file.dart';
 
+const _randomImage = [
+  'https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/3/4/-1646365743095601765066.jpg',
+  'https://img-cdn.xemgame.com/2020/04/20/Dopa-duoc-moi-thi-dau-chuyen-nghiep-2.jpg',
+  'https://i.pinimg.com/736x/36/92/ee/3692ee76bbc1dfd4b545c09d8a03288b.jpg',
+  'https://cdn.pixabay.com/photo/2020/07/21/16/10/pokemon-5426712__480.png',
+  'https://i.pinimg.com/originals/d6/f8/d7/d6f8d7b5cc1fca0665359e2b99458d41.jpg',
+  'https://image.thanhnien.vn/w1024/Uploaded/2022/abfluao/2021_08_12/h4_vxrj.jpg',
+  'https://9xwallpapers.com/wp-content/uploads/2021/07/Batman-Wallpaper-scaled.jpg',
+];
+
+var _count = _randomImage.length -1;
+
 class UserRepo extends GetxService {
 
   late final UserApi _userApi;
@@ -19,7 +31,16 @@ class UserRepo extends GetxService {
 
   Future<List<UserEntity>> fetchUserList({int? page = 1}) {
     return _userApi.getUsers(page: page.toString()).then((value) {
-      return Future.value(value?.data);
+      var list = value?.data;
+      list?.forEach((user) {
+        user.picture = _randomImage.getOrNull(_count);
+        --_count;
+        if(_count < 0 ) {
+          _count = _randomImage.length - 1;
+        }
+      });
+
+      return Future.value(list);
     });
   }
 
