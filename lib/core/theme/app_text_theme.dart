@@ -3,10 +3,11 @@ import 'package:dating_demo/all_file/all_file.dart';
 class AppTextTheme {
   AppTextTheme._();
 
-  static const double DEFAULT_FONT_SIZE = Dimens.text_XL;
+  static const double DEFAULT_FONT_SIZE = Dimens.text;
 
   static TextStyle text = TextStyle(
     color: AppColor.text.dynamic,
+    fontSize: DEFAULT_FONT_SIZE
   );
 
   static TextStyle textHint = text.copyWith(

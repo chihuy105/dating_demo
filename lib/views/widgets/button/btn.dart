@@ -1,6 +1,6 @@
 import 'package:dating_demo/all_file/all_file.dart';
 
-enum BtnType { PRIMARY, GHOST }
+enum BtnType { PRIMARY, GHOST , TEXT }
 
 class Btn extends StatelessWidget {
   // Data
@@ -12,6 +12,7 @@ class Btn extends StatelessWidget {
   // Style
   final BtnType? btnType;
   final EdgeInsetsGeometry? padding;
+  final double? elevation;
   final ButtonStyle? style;
   final bool matchParent;
 
@@ -26,6 +27,7 @@ class Btn extends StatelessWidget {
     Key? key,
     this.btnType,
     this.padding,
+    this.elevation,
     this.child,
     this.text,
     this.leading,
@@ -43,6 +45,7 @@ class Btn extends StatelessWidget {
     this.text,
     this.leading,
     this.padding = const EdgeInsets.all(Dimens.pad_S),
+    this.elevation ,
     this.loading = false,
     this.btnType,
     this.style,
@@ -70,11 +73,14 @@ class Btn extends StatelessWidget {
         case BtnType.PRIMARY:
         case null:
           finalStyle = AppButton.primaryStyle(context,
-              props: BtnStyleProps(padding: padding));
+              props: BtnStyleProps(padding: padding, elevation: elevation));
           break;
         case BtnType.GHOST:
           finalStyle = AppButton.ghostStyle(context,
               props: BtnStyleProps(padding: padding));
+          break;
+        case BtnType.TEXT:
+          finalStyle = AppButton.textStyle(context,);
           break;
       }
     }

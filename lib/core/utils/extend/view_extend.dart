@@ -122,13 +122,25 @@ extension VxTextBuilderExtend on VxTextBuilder {
 extension WidgetExtend on Widget {
   Padding pDefault({Key? key}) => Padding(
         key: key,
-        padding: const EdgeInsets.all(Vx.dp20),
+        padding: const EdgeInsets.all(Dimens.pad_default),
+        child: this,
+      );
+
+  Padding pxDefault({Key? key}) => Padding(
+        key: key,
+        padding: const EdgeInsets.symmetric(horizontal: Dimens.pad_default),
+        child: this,
+      );
+
+  Padding pyDefault({Key? key}) => Padding(
+        key: key,
+        padding: const EdgeInsets.symmetric(vertical: Dimens.pad_default),
         child: this,
       );
 
   Padding pDefaultL({Key? key}) => Padding(
         key: key,
-        padding: const EdgeInsets.all(Vx.dp24),
+        padding: const EdgeInsets.all(Dimens.pad_default),
         child: this,
       );
 

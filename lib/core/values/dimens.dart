@@ -17,6 +17,8 @@ class Dimens {
   static const double ic_2XL = 32.0;
   static const double ic_3XL = 38.0;
 
+  static const double pad_default = 16.0;
+
   static const double pad_S_4 = 2.0;
   static const double pad_S_3 = 4.0;
   static const double pad_S_2 = 8.0;

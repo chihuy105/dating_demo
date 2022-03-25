@@ -143,7 +143,7 @@ class AppColor {
       light: Color(0xFF171717),
       dark: Color(0xFFFAFBFC));
 
-  static const AppColorData textGray = AppColorData(light: Color(0xFFcccccc), dark: Color(0xFF666666));
+  static const AppColorData textGray = AppColorData(light: Color(0xff727272), dark: Color(0xFF666666));
 
   static const AppColorData textHint = AppColorData(light: Color(0xE6989898), dark: Color(0xFF989898));
 
